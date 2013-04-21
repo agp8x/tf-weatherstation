@@ -1,0 +1,27 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          Temperature and Humidity logging
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts logging with python
+# Description:       starts logging of sensors with python
+### END INIT INFO
+# Author: Name mail@clemensklug.de
+
+# Aktionen
+case "$1" in
+    start)
+	cd /home/XXXX/temp/python
+	sudo -u XXXX screen -dmS recordall python all.py&
+        ;;
+    stop)
+       # /opt/beispiel stop
+        ;;
+    restart)
+       # /opt/beispiel restart
+        ;;
+esac
+
+exit 0

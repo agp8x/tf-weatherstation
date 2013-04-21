@@ -1,1 +1,3 @@
-# Das ist _MEINE_ README
+#Weatherstation
+##Overview
+Python, Bash, Tinkerforge

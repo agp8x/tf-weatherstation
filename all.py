@@ -35,11 +35,15 @@ name6="baro1"
 
 tempSensors=2
 
-from tinkerforge.ip_connection import IPConnection
-from tinkerforge.bricklet_temperature import Temperature
-from tinkerforge.bricklet_humidity import Humidity
-from tinkerforge.bricklet_ambient_light import AmbientLight
-from tinkerforge.bricklet_barometer import Barometer
+try:
+	from tinkerforge.ip_connection import IPConnection
+	from tinkerforge.bricklet_temperature import Temperature
+	from tinkerforge.bricklet_humidity import Humidity
+	from tinkerforge.bricklet_ambient_light import AmbientLight
+	from tinkerforge.bricklet_barometer import Barometer
+except ImportError:
+	print("package 'tinkerforge' not installed, canceling")
+	raise
 
 import time
 import string
@@ -47,6 +51,8 @@ import os.path
 import os
 import sys,traceback
 import array
+
+
 cbtimetemp=30000
 cbtimehumi=30000
 cbtimeambi=60000

@@ -7,6 +7,24 @@ import traceback
 from timeFunctions import *
 import xml.etree.ElementTree as ET
 
+#class SensorType(Enum):
+class SensorType:
+	none = 0
+	temp = 1
+	humi = 2
+	ambi = 3
+	baro = 4
+	rain = 5
+
+sensorValues=[
+	(0,''),
+	(100.0, '°C'),
+	(10.0, '%RH'),
+	(10.0, 'Lux'),
+	(1000, 'mbar'),
+	(2.5, 'l/qm')
+]
+
 class Logger(object):
 	def __init__(self,names, temperature_config, log, records):
 		self.names = names
@@ -39,34 +57,19 @@ class Logger(object):
 		valuelog.close()
 
 	##########################################
-	# callbacks for temp1+2					 #
+	# generic callback	 					 #
 	##########################################
-	def cb_temperature(self,value,sensor):
-		if(self.temp_rise(self.prev_temps[sensor],value,sensor)):
+	def cb_generic(self,value, sensor, type):
+		if(type == SensorType.temp):
+			if(self.temp_rise(self.prev_temps[sensor],value,sensor)):
+				self.write_value(value,sensor)
+				self.prev_temps[sensor]=value
+		elif (type == SensorType.none):
+			return
+		else:
 			self.write_value(value,sensor)
-			self.prev_temps[sensor]=value
-		print(self.names[sensor] +': ' + str(value/100.0) + ' °C,' + str(time.ctime()))
-	
-	###########################################
-	# callback for humidity1				  #
-	###########################################
-	def cb_humidity(self,rh,sensor):
-		self.write_value(rh,sensor)
-		print(self.names[sensor] +': '+ str(rh/10.0) + ' %RH,' + str(time.ctime()))
-	
-	###########################################
-	# callback for ambi-light1+2		  	  #
-	###########################################
-	def cb_illuminance(self,illuminance,sensor):
-		self.write_value(illuminance,sensor)
-		print(self.names[sensor] +': '+ str(illuminance/10.0) + ' Lux,' + str(time.ctime()))
-	
-	###########################################
-	# callback for barometer1		  		  #
-	###########################################
-	def cb_pressure(self,pressure,sensor):
-		self.write_value(pressure,sensor)
-		print(self.names[sensor] +": "+str(pressure/1000)+ "mbar"+str(time.ctime()))
+		unit=sensorValues[type]
+		print(self.names[sensor] +': ' + str(value/unit[0]) + ' '+unit[1]+', ' + str(time.ctime()))
 	
 	###########################################
 	# exception logging						  #

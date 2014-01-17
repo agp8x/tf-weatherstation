@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-  
 
-#class SensorType(Enum):
-class SensorType:
-	none = 0
-	temp = 1
-	humi = 2
-	ambi = 3
-	baro = 4
-	rain = 5
 
 try:
 	from tinkerforge.ip_connection import IPConnection
@@ -26,6 +18,7 @@ import time
 from functools import partial
 
 from Logger import Logger
+from Logger import SensorType
 
 #HOST = "localhost"
 HOST = "192.168.2.30"
@@ -58,7 +51,6 @@ records='records'
 
 lockname=locks+"/all.lock"
 log=open(logs+"/all.log",'a')
-noop_cb = lambda value,sensor:0
 
 if __name__ == "__main__":
 	if not os.path.exists(lockname):
@@ -67,7 +59,6 @@ if __name__ == "__main__":
 		lock.close()
 		# lock obtained
 		logger=Logger(names, (tempSensors, prev_temps_default, tempmaxdiff), log, records)
-		callbacks=[noop_cb, logger.cb_temperature, logger.cb_humidity, logger.cb_illuminance, logger.cb_pressure, noop_cb]
 		try:
 			ipcon = IPConnection()
 			# connect
@@ -76,7 +67,7 @@ if __name__ == "__main__":
 			log.flush()
 			connected=[]
 			for i,sensor in enumerate(SENSORS):
-				callback=partial(callbacks[sensor[2]], sensor=i)
+				callback=partial(logger.cb_generic, sensor=i, type=sensor[2])
 				if(sensor[2] == SensorType.temp):
 					obj = Temperature(sensor[1], ipcon)
 					obj.set_temperature_callback_period(cbtimetemp)

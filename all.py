@@ -77,10 +77,9 @@ def write_value(value,sensor):
 	valuelog=open(valuename,'a')
 	valuelog.write(str(value) + ';' + str(int(time.time())) +"\n")
 	valuelog.close()
-#end#
 
 #########################################
-# generic callback for temp#		#
+# generic checking of temperature		#
 #########################################
 def check_and_write_temperature(value,sensor):
 	if(sensor>=tempSensors):
@@ -89,10 +88,9 @@ def check_and_write_temperature(value,sensor):
 	if(temp_rise(prev_temps[sensor],value,str(sensor+1))):
 		write_value(value,sensor)
 		prev_temps[sensor]=value
-#end#
 
 ##########################################
-# callbacks for temp1+2			 #
+# callbacks for temp1+2					 #
 ##########################################
 def cb_temperature0(value):
 	check_and_write_temperature(value,0)
@@ -101,18 +99,16 @@ def cb_temperature0(value):
 def cb_temperature1(value):
 	check_and_write_temperature(value,1)
 	print(name2+': ' + str(value/100.0) + ' °C,' + str(time.ctime()))
-#end#
 	
 ###########################################
-# callback for humidity1		  #
+# callback for humidity1				  #
 ###########################################
 def cb_humidity2(rh):
 	write_value(rh,2)
 	print(name3 +': '+ str(rh/10.0) + ' %RH,' + str(time.ctime()))
-#end#
 	
 ###########################################
-# callback for ambi-light1+2		  #
+# callback for ambi-light1+2		  	  #
 ###########################################
 def cb_illuminance3(illuminance):
 	write_value(illuminance,3)
@@ -121,18 +117,16 @@ def cb_illuminance3(illuminance):
 def cb_illuminance4(illuminance):
 	write_value(illuminance,4)
 	print(name5 +': '+ str(illuminance/10.0) + ' Lux,' + str(time.ctime()))
-#end#
 	
 ###########################################
-# callback for barometer1		  #
+# callback for barometer1		  		  #
 ###########################################
 def cb_pressure5(pressure):
 	write_value(pressure,5)
 	print(name6+": "+str(pressure/1000)+ "mbar"+str(time.ctime()))
-#end#
 	
 ###########################################
-# exception logging			  #
+# exception logging						  #
 ###########################################
 def printException(inst):
 	global log
@@ -149,12 +143,12 @@ def printException(inst):
 	log.flush()
 #end#
 
-if not os.path.exists(lockname):
-	if __name__ == "__main__":
+if __name__ == "__main__":
+	if not os.path.exists(lockname):
 		lock=open(lockname,'w')
 		lock.write(str(time.time()))
 		lock.close()
-		#
+		# lock obtained
 		try:
 			ipcon = IPConnection()
 			t0 = Temperature(UID[0], ipcon)
@@ -163,10 +157,10 @@ if not os.path.exists(lockname):
 			al3 = AmbientLight(UID[3], ipcon)
 			al4 = AmbientLight(UID[4], ipcon)
 			b5 = Barometer(UID[5], ipcon)
-			
-			
+			# connect
 			ipcon.connect(HOST, PORT)
 		except Exception as inst:
+			#connection failed, log and exit
 			printException(inst)
 		else:
 			cb_temperature0(t0.get_temperature())
@@ -199,8 +193,8 @@ if not os.path.exists(lockname):
 			log.write('stop logging... @'+time.ctime()+"\n")
 		
 		os.remove(lockname)
-else:
-	print('lock file active!!')
-	log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
+	else:
+		print('lock file active!!')
+		log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
 
 

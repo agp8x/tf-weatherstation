@@ -11,6 +11,7 @@ class Logger(object):
 	def __init__(self,names, temperature_config, log, records):
 		self.names = names
 		self.temp_sensors = temperature_config[0]
+		self.temp_prev_default=temperature_config[1]
 		self.prev_temps =[]
 		for i in range(self.temp_sensors):
 			self.prev_temps.append(temperature_config[1])
@@ -19,7 +20,7 @@ class Logger(object):
 		self.records = records
 	
 	def temp_rise(self,old,new,sensor):
-		if(old==20000):
+		if(old==self.temp_prev_default):
 			return True
 		if((old-new)>self.temp_max_diff or (new-old)>self.temp_max_diff):
 			self.log.write('error checking temp '+sensor+';prev('+str(old)+');cur('+str(new)+'); ... @'+time.ctime()+"\n")

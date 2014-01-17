@@ -8,7 +8,12 @@ checkfile='locks/records_moved'
 
 def prevday(then,now):
 	#ist "then" gestern (oder noch älter)?
-	return ((then.tm_yday<now.tm_yday) and (then.tm_year==now.tm_year)) or ((then.tm_yday==366) and (now.tm_yday==1))
+	greaterDay=(then.tm_yday < now.tm_yday) and (then.tm_year == now.tm_year)
+	if(greaterDay):
+		newYear=False
+	else:
+		newYear=then.tm_year < now.tm_year
+	return (greaterDay) or (newYear)
 def preptime():
 	now=time.localtime()
 	day=now.tm_mday

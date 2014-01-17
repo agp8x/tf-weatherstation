@@ -56,7 +56,7 @@ import array
 cbtimetemp=30000
 cbtimehumi=30000
 cbtimeambi=60000
-cbtimebaro=30000
+cbtimebaro=60000
 
 tempmaxdiff=200 # 200== 2.0 C
 

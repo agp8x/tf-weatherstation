@@ -3,12 +3,12 @@
 
 #class SensorType(Enum):
 class SensorType:
+	none = 0
 	temp = 1
 	humi = 2
 	ambi = 3
 	baro = 4
 	rain = 5
-	none = -1
 
 try:
 	from tinkerforge.ip_connection import IPConnection
@@ -23,6 +23,7 @@ except ImportError:
 import os.path
 import os
 import time
+from functools import partial
 
 from Logger import Logger
 
@@ -57,6 +58,7 @@ records='records'
 
 lockname=locks+"/all.lock"
 log=open(logs+"/all.log",'a')
+noop_cb = lambda value,sensor:0
 
 if __name__ == "__main__":
 	if not os.path.exists(lockname):
@@ -65,6 +67,7 @@ if __name__ == "__main__":
 		lock.close()
 		# lock obtained
 		logger=Logger(names, (tempSensors, prev_temps_default, tempmaxdiff), log, records)
+		callbacks=[noop_cb, logger.cb_temperature, logger.cb_humidity, logger.cb_illuminance, logger.cb_pressure, noop_cb]
 		try:
 			ipcon = IPConnection()
 			# connect
@@ -73,34 +76,27 @@ if __name__ == "__main__":
 			log.flush()
 			connected=[]
 			for i,sensor in enumerate(SENSORS):
+				callback=partial(callbacks[sensor[2]], sensor=i)
 				if(sensor[2] == SensorType.temp):
 					obj = Temperature(sensor[1], ipcon)
 					obj.set_temperature_callback_period(cbtimetemp)
-					if(i == 0):
-						logger.cb_temperature0(obj.get_temperature())
-						obj.register_callback(obj.CALLBACK_TEMPERATURE, logger.cb_temperature0)
-					else:
-						logger.cb_temperature1(obj.get_temperature())
-						obj.register_callback(obj.CALLBACK_TEMPERATURE, logger.cb_temperature1)
+					callback(obj.get_temperature())
+					obj.register_callback(obj.CALLBACK_TEMPERATURE, callback)
 				elif (sensor[2] == SensorType.humi):
 					obj = Humidity(sensor[1], ipcon)
-					logger.cb_humidity2(obj.get_humidity())
+					callback(obj.get_humidity())
 					obj.set_humidity_callback_period(cbtimehumi)
-					obj.register_callback(obj.CALLBACK_HUMIDITY, logger.cb_humidity2)
+					obj.register_callback(obj.CALLBACK_HUMIDITY, callback)
 				elif(sensor[2] == SensorType.ambi):
 					obj = AmbientLight(sensor[1], ipcon)
 					obj.set_illuminance_callback_period(cbtimeambi)
-					if(i == 0):
-						logger.cb_illuminance3(obj.get_illuminance())
-						obj.register_callback(obj.CALLBACK_ILLUMINANCE, logger.cb_illuminance3)
-					else:
-						logger.cb_illuminance4(obj.get_illuminance())
-						obj.register_callback(obj.CALLBACK_ILLUMINANCE, logger.cb_illuminance4)
+					callback(obj.get_illuminance())
+					obj.register_callback(obj.CALLBACK_ILLUMINANCE, callback)
 				elif (sensor[2] == SensorType.baro):
 					obj = Barometer(sensor[1], ipcon)
-					logger.cb_pressure5(obj.get_air_pressure())
+					callback(obj.get_air_pressure())
 					obj.set_air_pressure_callback_period(cbtimebaro)
-					obj.register_callback(obj.CALLBACK_AIR_PRESSURE,logger.cb_pressure5)
+					obj.register_callback(obj.CALLBACK_AIR_PRESSURE,callback)
 				else:
 					continue
 				connected.append(obj)

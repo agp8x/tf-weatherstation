@@ -23,7 +23,7 @@ class Logger(object):
 		if(old==self.temp_prev_default):
 			return True
 		if((old-new)>self.temp_max_diff or (new-old)>self.temp_max_diff):
-			self.log.write('error checking temp '+sensor+';prev('+str(old)+');cur('+str(new)+'); ... @'+time.ctime()+"\n")
+			self.log.write('error checking '+self.names[sensor]+';prev('+str(old)+');cur('+str(new)+'); ... @'+time.ctime()+"\n")
 			self.log.flush()
 			return False
 		else:
@@ -38,55 +38,33 @@ class Logger(object):
 		valuelog.write(str(value) + ';' + str(int(time.time())) +"\n")
 		valuelog.close()
 
-	#########################################
-	# generic checking of temperature		#
-	#########################################
-	def check_and_write_temperature(self,value,sensor):
-		if(sensor>=self.temp_sensors):
-			return
-		if(self.temp_rise(self.prev_temps[sensor],value,str(sensor+1))):
-			self.write_value(value,sensor)
-			self.prev_temps[sensor]=value
-
 	##########################################
 	# callbacks for temp1+2					 #
 	##########################################
-	def cb_temperature0(self,value):
-		sensor=0
-		self.check_and_write_temperature(value,sensor)
-		print(self.names[sensor] +': ' + str(value/100.0) + ' °C,' + str(time.ctime()))
-	#
-	def cb_temperature1(self,value):
-		sensor=1
-		self.check_and_write_temperature(value,sensor)
+	def cb_temperature(self,value,sensor):
+		if(self.temp_rise(self.prev_temps[sensor],value,sensor)):
+			self.write_value(value,sensor)
+			self.prev_temps[sensor]=value
 		print(self.names[sensor] +': ' + str(value/100.0) + ' °C,' + str(time.ctime()))
 	
 	###########################################
 	# callback for humidity1				  #
 	###########################################
-	def cb_humidity2(self,rh):
-		sensor=2
+	def cb_humidity(self,rh,sensor):
 		self.write_value(rh,sensor)
 		print(self.names[sensor] +': '+ str(rh/10.0) + ' %RH,' + str(time.ctime()))
 	
 	###########################################
 	# callback for ambi-light1+2		  	  #
 	###########################################
-	def cb_illuminance3(self,illuminance):
-		sensor=3
-		self.write_value(illuminance,sensor)
-		print(self.names[sensor] +': '+ str(illuminance/10.0) + ' Lux,' + str(time.ctime()))
-	#
-	def cb_illuminance4(self,illuminance):
-		sensor=4
+	def cb_illuminance(self,illuminance,sensor):
 		self.write_value(illuminance,sensor)
 		print(self.names[sensor] +': '+ str(illuminance/10.0) + ' Lux,' + str(time.ctime()))
 	
 	###########################################
 	# callback for barometer1		  		  #
 	###########################################
-	def cb_pressure5(self,pressure):
-		sensor=5
+	def cb_pressure(self,pressure,sensor):
 		self.write_value(pressure,sensor)
 		print(self.names[sensor] +": "+str(pressure/1000)+ "mbar"+str(time.ctime()))
 	

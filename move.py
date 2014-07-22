@@ -28,6 +28,8 @@ else:
 		print("move")
 		log.write("moving logs... @"+time.ctime()+"\n")
 		log.flush()
+		if not os.path.exists("arch"):
+			os.mkdir("arch")
 		os.system("./move.sh "+preptime())
 		check.close()
 		check=open(checkfile,'w')

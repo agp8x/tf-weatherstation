@@ -69,6 +69,7 @@ if __name__ == "__main__":
 					log.flush()
 					connected=[]
 					for i,sensor in enumerate(SENSORS):
+						print("setup device "+sensor[0]+" ("+str(i)+")")
 						callback=partial(logger.cb_generic, sensor=i, type=sensor[2])
 						if(sensor[2] == SensorType.temp):
 							obj = Temperature(sensor[1], ipcon)

@@ -21,9 +21,26 @@ from Logger import Logger
 from settings import SensorType
 import settings
 
-log=open(settings.logname,'a')
+def check_dirs_and_files():
+	# log
+	if not os.path.exists(settings.logs):
+		os.mkdir(settings.logs)
+	if not os.path.exists(settings.logname):
+		open(settings.logname, 'w').close()
+	if not os.path.exists(settings.exceptionlog):
+		file=open(settings.exceptionlog, 'w')
+		file.write("<exceptions></exceptions>")
+		file.close()
+	# lock
+	if not os.path.exists(settings.locks):
+		os.mkdir(settings.locks)
+	# records
+	if not os.path.exists(settings.records):
+		os.mkdir(settings.records)
 
 if __name__ == "__main__":
+	check_dirs_and_files()
+	log=open(settings.logname,'a')
 	try:
 		while True:
 			if not os.path.exists(settings.lockname):
@@ -76,6 +93,8 @@ if __name__ == "__main__":
 			else:
 				print('lock file active!!')
 				log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
+		print("something failed, wait for retry ("+settings.waitDelay+")")
+		time.sleep(settings.waitDelay)
 	except KeyboardInterrupt:
 		print("Interrupted")
 		log.write("keyboard-interrupt happened @"+time.ctime()+"\n")

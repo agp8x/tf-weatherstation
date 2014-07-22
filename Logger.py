@@ -60,12 +60,12 @@ class Logger(object):
 	# exception logging						  #
 	###########################################
 	def printException(self,inst):
-		tree=ET.parse('logs/exceptions.xml')
+		tree=ET.parse(settings.exceptionlog)
 		root=tree.getroot()
 		new=ET.Element('exception',{'class':str(type(inst)).split("'")[1],'date':str(time.ctime()),'time':str(int(time.time())),'type':str(inst)})
 		new.text=traceback.format_exc()
 		root.append(new)
-		tree.write('logs/exceptions.xml')
+		tree.write(settings.exceptionlog)
 	
 		self.log.write('an Exception happen during connection @'+time.ctime()+"\n")
 		self.log.flush()

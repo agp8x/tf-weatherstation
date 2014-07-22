@@ -10,14 +10,6 @@ class SensorType:
 	baro = 4
 	rain = 5
 
-SENSOR_VALUES=[
-	(0,''),
-	(100.0, '°C'),
-	(10.0, '%RH'),
-	(10.0, 'Lux'),
-	(1000, 'mbar'),
-	(2.5, 'l/qm')
-]
 
 #HOST = "localhost"
 HOST = "192.168.2.34"
@@ -39,10 +31,6 @@ TIMES={
 	SensorType.baro: 60000,
 }
 
-NAMES=list(map(lambda a:a[0], SENSORS))
-
-#tempSensors=2
-tempSensors=len(list(filter(lambda a: True if a[2]==SensorType.temp else False,SENSORS)))
 tempmaxdiff=200 # 200== 2.0 C
 prev_temps_default=20000
 
@@ -52,4 +40,27 @@ records='records'
 
 lockname=locks+"/all.lock"
 logname=logs+"/all.log"
+exceptionlog=logs+"/exceptions.xml"
+
+waitDelay = 10
+
+########################################
+# only change when new sensor is added #
+########################################
+
+SENSOR_VALUES=[
+	(0,''),
+	(100.0, '°C'),
+	(10.0, '%RH'),
+	(10.0, 'Lux'),
+	(1000, 'mbar'),
+	(2.5, 'l/qm')
+]
+
+###########################
+# no manual change needed #
+###########################
+
+tempSensors=len(list(filter(lambda a: True if a[2]==SensorType.temp else False,SENSORS)))
+NAMES=list(map(lambda a:a[0], SENSORS))
 

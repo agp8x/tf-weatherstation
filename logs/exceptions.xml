@@ -1,1 +1,681 @@
-<exceptions></exceptions>
+<exceptions><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022642" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:42 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception><exception class="exceptions.IOError" date="Tue Jul 22 11:50:43 2014" time="1406022643" type="[Errno 2] No such file or directory: 'records/temp1_07.22.2014'">Traceback (most recent call last):
+  File "all.py", line 49, in &lt;module&gt;
+    callback(obj.get_temperature())
+  File "/home/agp8x/git/weatherstation/Logger.py", line 50, in cb_generic
+    self.write_value(value,sensor)
+  File "/home/agp8x/git/weatherstation/Logger.py", line 40, in write_value
+    valuelog=open(valuename,'a')
+IOError: [Errno 2] No such file or directory: 'records/temp1_07.22.2014'
+</exception></exceptions>

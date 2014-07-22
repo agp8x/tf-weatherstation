@@ -4,38 +4,23 @@
 import time
 import sys
 import traceback
-from timeFunctions import *
 import xml.etree.ElementTree as ET
 
-#class SensorType(Enum):
-class SensorType:
-	none = 0
-	temp = 1
-	humi = 2
-	ambi = 3
-	baro = 4
-	rain = 5
-
-sensorValues=[
-	(0,''),
-	(100.0, '°C'),
-	(10.0, '%RH'),
-	(10.0, 'Lux'),
-	(1000, 'mbar'),
-	(2.5, 'l/qm')
-]
+from timeFunctions import *
+from settings import SensorType
+import settings
 
 class Logger(object):
-	def __init__(self,names, temperature_config, log, records):
-		self.names = names
-		self.temp_sensors = temperature_config[0]
-		self.temp_prev_default=temperature_config[1]
+	def __init__(self, log):
+		self.names = settings.NAMES
+		self.temp_sensors = settings.tempSensors
+		self.temp_prev_default=settings.prev_temps_default
 		self.prev_temps =[]
 		for i in range(self.temp_sensors):
-			self.prev_temps.append(temperature_config[1])
-		self.temp_max_diff = temperature_config[2]
+			self.prev_temps.append(self.temp_prev_default)
+		self.temp_max_diff = settings.tempmaxdiff
 		self.log = log
-		self.records = records
+		self.records = settings.records
 	
 	def temp_rise(self,old,new,sensor):
 		if(old==self.temp_prev_default):
@@ -68,7 +53,7 @@ class Logger(object):
 			return
 		else:
 			self.write_value(value,sensor)
-		unit=sensorValues[type]
+		unit=settings.SENSOR_VALUES[type]
 		print(self.names[sensor] +': ' + str(value/unit[0]) + ' '+unit[1]+', ' + str(time.ctime()))
 	
 	###########################################

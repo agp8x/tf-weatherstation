@@ -21,7 +21,7 @@ from Logger import Logger
 from Logger import SensorType
 
 #HOST = "localhost"
-HOST = "192.168.2.30"
+HOST = "192.168.2.34"
 PORT = 4223
 
 SENSORS=[
@@ -72,6 +72,7 @@ if __name__ == "__main__":
 						print("setup device "+sensor[0]+" ("+str(i)+")")
 						callback=partial(logger.cb_generic, sensor=i, type=sensor[2])
 						if(sensor[2] == SensorType.temp):
+							print("\t TEMP, "+str(cbtimetemp)+", ")
 							obj = Temperature(sensor[1], ipcon)
 							obj.set_temperature_callback_period(cbtimetemp)
 							callback(obj.get_temperature())

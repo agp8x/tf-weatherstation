@@ -53,52 +53,53 @@ lockname=locks+"/all.lock"
 log=open(logs+"/all.log",'a')
 
 if __name__ == "__main__":
-	if not os.path.exists(lockname):
-		lock=open(lockname,'w')
-		lock.write(str(time.time()))
-		lock.close()
-		# lock obtained
-		logger=Logger(names, (tempSensors, prev_temps_default, tempmaxdiff), log, records)
-		try:
-			ipcon = IPConnection()
-			# connect
-			ipcon.connect(HOST, PORT)
-			log.write('start logging "all" ... @'+time.ctime()+"\n")
-			log.flush()
-			connected=[]
-			for i,sensor in enumerate(SENSORS):
-				callback=partial(logger.cb_generic, sensor=i, type=sensor[2])
-				if(sensor[2] == SensorType.temp):
-					obj = Temperature(sensor[1], ipcon)
-					obj.set_temperature_callback_period(cbtimetemp)
-					callback(obj.get_temperature())
-					obj.register_callback(obj.CALLBACK_TEMPERATURE, callback)
-				elif (sensor[2] == SensorType.humi):
-					obj = Humidity(sensor[1], ipcon)
-					callback(obj.get_humidity())
-					obj.set_humidity_callback_period(cbtimehumi)
-					obj.register_callback(obj.CALLBACK_HUMIDITY, callback)
-				elif(sensor[2] == SensorType.ambi):
-					obj = AmbientLight(sensor[1], ipcon)
-					obj.set_illuminance_callback_period(cbtimeambi)
-					callback(obj.get_illuminance())
-					obj.register_callback(obj.CALLBACK_ILLUMINANCE, callback)
-				elif (sensor[2] == SensorType.baro):
-					obj = Barometer(sensor[1], ipcon)
-					callback(obj.get_air_pressure())
-					obj.set_air_pressure_callback_period(cbtimebaro)
-					obj.register_callback(obj.CALLBACK_AIR_PRESSURE,callback)
-				else:
-					continue
-				connected.append(obj)
-			raw_input('Press key to exit\n')
-			ipcon.disconnect()
-			log.write('stop logging... @'+time.ctime()+"\n")
-		except Exception as inst:
-			#connection failed, log and exit
-			logger.printException(inst)
-		os.remove(lockname)
-	else:
-		print('lock file active!!')
-		log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
+	while True:
+		if not os.path.exists(lockname):
+			lock=open(lockname,'w')
+			lock.write(str(time.time()))
+			lock.close()
+			# lock obtained
+			logger=Logger(names, (tempSensors, prev_temps_default, tempmaxdiff), log, records)
+			try:
+				ipcon = IPConnection()
+				# connect
+				ipcon.connect(HOST, PORT)
+				log.write('start logging "all" ... @'+time.ctime()+"\n")
+				log.flush()
+				connected=[]
+				for i,sensor in enumerate(SENSORS):
+					callback=partial(logger.cb_generic, sensor=i, type=sensor[2])
+					if(sensor[2] == SensorType.temp):
+						obj = Temperature(sensor[1], ipcon)
+						obj.set_temperature_callback_period(cbtimetemp)
+						callback(obj.get_temperature())
+						obj.register_callback(obj.CALLBACK_TEMPERATURE, callback)
+					elif (sensor[2] == SensorType.humi):
+						obj = Humidity(sensor[1], ipcon)
+						obj.set_humidity_callback_period(cbtimehumi)
+						callback(obj.get_humidity())
+						obj.register_callback(obj.CALLBACK_HUMIDITY, callback)
+					elif(sensor[2] == SensorType.ambi):
+						obj = AmbientLight(sensor[1], ipcon)
+						obj.set_illuminance_callback_period(cbtimeambi)
+						callback(obj.get_illuminance())
+						obj.register_callback(obj.CALLBACK_ILLUMINANCE, callback)
+					elif (sensor[2] == SensorType.baro):
+						obj = Barometer(sensor[1], ipcon)
+						callback(obj.get_air_pressure())
+						obj.set_air_pressure_callback_period(cbtimebaro)
+						obj.register_callback(obj.CALLBACK_AIR_PRESSURE,callback)
+					else:
+						continue
+					connected.append(obj)
+				raw_input('Press key to exit\n')
+				ipcon.disconnect()
+				log.write('stop logging... @'+time.ctime()+"\n")
+			except Exception as inst:
+				#connection failed, log and exit
+				logger.printException(inst)
+			os.remove(lockname)
+		else:
+			print('lock file active!!')
+			log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
 

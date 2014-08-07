@@ -36,6 +36,7 @@ class Logger(object):
 	# common function to write value to file #
 	##########################################
 	def write_value(self,value,sensor):
+		# TODO: catch IOError
 		valuename=self.records+"/"+self.names[sensor]+"_"+preptime()
 		valuelog=open(valuename,'a')
 		valuelog.write(str(value) + ';' + str(int(time.time())) +"\n")

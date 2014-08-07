@@ -24,7 +24,7 @@ import settings
 def check_dirs_and_files():
 	# log
 	if not os.path.exists(settings.logs):
-		os.mkdir(settings.logs)
+		os.mkdir(settings.logs, 0000755)
 	if not os.path.exists(settings.logname):
 		open(settings.logname, 'w').close()
 	if not os.path.exists(settings.exceptionlog):
@@ -33,10 +33,10 @@ def check_dirs_and_files():
 		file.close()
 	# lock
 	if not os.path.exists(settings.locks):
-		os.mkdir(settings.locks)
+		os.mkdir(settings.locks, 0000755)
 	# records
 	if not os.path.exists(settings.records):
-		os.mkdir(settings.records)
+		os.mkdir(settings.records, 0000755)
 
 if __name__ == "__main__":
 	check_dirs_and_files()

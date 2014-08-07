@@ -5,6 +5,8 @@ import time
 import os
 from timeFunctions import *
 
+# TODO: path from settings
+
 checkfile='locks/records_moved'
 
 if not os.path.exists(checkfile):
@@ -30,7 +32,7 @@ else:
 		log.flush()
 		if not os.path.exists("arch"):
 			os.mkdir("arch")
-		os.system("./move.sh "+preptime())
+		os.system("./move.sh "+preptime())	# TODO: replace me with: https://docs.python.org/2/library/shutil.html#module-shutil
 		check.close()
 		check=open(checkfile,'w')
 		check.write(str(time.time()))

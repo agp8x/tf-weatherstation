@@ -28,8 +28,8 @@ def check_dirs_and_files():
 
 def obtainLock(lockfile = settings.lockname):
 	if not os.path.exists(lockfile):
-		lock=open(lockfile,'w')
-		lock.write(str(time.time()))
+		lock = open(lockfile, 'w')
+		lock.write( str(time.time()) )
 		lock.close()
 		return True
 	return False
@@ -39,16 +39,16 @@ def freeLock(lockfile = settings.lockname):
 		os.remove(lockfile)
 
 def formatHost(host):
-	return "%s:%d"%(host['name'], host['port'])
+	return "%s:%d" % (host['name'], host['port'])
 
 if __name__ == "__main__":
 	check_dirs_and_files()
-	log=open(settings.logname,'a')
+	log=open(settings.logname, 'a')
 	try:
-		log.write('setting up "all" ... @'+time.ctime()+"\n")
+		log.write("setting up all ... @" + time.ctime() + "\n")
 		while True:
 			if obtainLock():
-				logger=Logger(log, )
+				logger = Logger(log)
 				try:
 					connections = []
 					connectedSensors = []
@@ -58,10 +58,10 @@ if __name__ == "__main__":
 						connection, sensors = conSetup.setupConnectionAndSensors(con['host'], con['sensors'], settings.TIMES, logger.cb_generic)
 						connections.append(connection)
 						connectedSensors.append(sensors)
-						log.write("started logging at %s ... @ %s\n"% (formatHost(con['host']), time.ctime()))
+						log.write("started logging at " + formatHost(con['host']) + " ... @ " + time.ctime() + "\n")
 					log.flush()
-					raw_input('Press key to restart\n')
-					log.write('stop logging... @'+time.ctime()+"\n")
+					raw_input("Press key to restart\n")
+					log.write("stop logging... @" + time.ctime() + "\n")
 					conSetup.disconnectAny(connections)
 				except Exception as inst:
 					#connection failed, log and exit
@@ -69,14 +69,14 @@ if __name__ == "__main__":
 					print(inst)
 				freeLock()
 			else:
-				print('lock file active!!')
-				log.write('lock collision: lock "all" active @ '+time.ctime()+"\n")
-			print("wait for retry ("+str(settings.waitDelay)+")")
+				print("lock file active!!")
+				log.write("lock collision: lock 'all' active @ " + time.ctime() + "\n")
+			print("wait for retry (" + str(settings.waitDelay) + ")")
 			time.sleep(settings.waitDelay)
 	except KeyboardInterrupt:
 		print(" Interrupted, cleaning up")
 		conSetup.disconnectAny(connections)
-		log.write("keyboard-interrupt happened @"+time.ctime()+"\n")
+		log.write("keyboard-interrupt happened @" + time.ctime() + "\n")
 		log.close()
 		freeLock()
 

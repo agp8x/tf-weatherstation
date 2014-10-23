@@ -49,7 +49,7 @@ class SensorSetup(object):
 		obj = Barometer(id, self.connection)
 		callback(obj.get_air_pressure())
 		obj.set_air_pressure_callback_period(cbtime)
-		obj.register_callback(obj.CALLBACK_AIR_PRESSURE,callback)
+		obj.register_callback(obj.CALLBACK_AIR_PRESSURE, callback)
 		return obj
 	
 	def setupNone(self, callback, id, cbtime):

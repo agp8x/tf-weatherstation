@@ -13,7 +13,6 @@ except ImportError:
 from functools import partial
 import traceback
 from settings import SensorType
-from Logger import Logger
 
 class Setup(object):
 

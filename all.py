@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-  
 
-
-try:
-	from tinkerforge.ip_connection import IPConnection
-except ImportError:
-	print("package 'tinkerforge' not installed, canceling")
-	raise
-
 import os.path
 import os
 import time
 
 from Logger import Logger
-from Setup import Setup
-from settings import SensorType
+from ConnectionSetup import ConnectionSetup
 import settings
 
 def check_dirs_and_files():
@@ -41,31 +33,36 @@ def obtainLock(lockfile = settings.lockname):
 		lock.close()
 		return True
 	return False
+
 def freeLock(lockfile = settings.lockname):
 	if os.path.exists(lockfile):
 		os.remove(lockfile)
-def disconnect(connection):
-	if not connection.get_connection_state() is IPConnection.CONNECTION_STATE_DISCONNECTED:
-		connection.disconnect()
+
+def formatHost(host):
+	return "%s:%d"%(host['name'], host['port'])
 
 if __name__ == "__main__":
 	check_dirs_and_files()
 	log=open(settings.logname,'a')
 	try:
+		log.write('setting up "all" ... @'+time.ctime()+"\n")
 		while True:
 			if obtainLock():
 				logger=Logger(log, )
 				try:
-					ipcon = IPConnection()
-					# connect
-					ipcon.connect(settings.HOST, settings.PORT)
-					log.write('start logging "all" ... @'+time.ctime()+"\n")
+					connections = []
+					connectedSensors = []
+					for con in settings.SENSORS:
+						con = settings.SENSORS[con]
+						conSetup = ConnectionSetup()
+						connection, sensors = conSetup.setupConnectionAndSensors(con['host'], con['sensors'], settings.TIMES, logger.cb_generic)
+						connections.append(connection)
+						connectedSensors.append(sensors)
+						log.write("started logging at %s ... @ %s\n"% (formatHost(con['host']), time.ctime()))
 					log.flush()
-					setup = Setup(ipcon, settings.SENSORS, settings.TIMES, logger.cb_generic)
-					connected = setup.setupSensors()
 					raw_input('Press key to restart\n')
-					disconnect(ipcon)
 					log.write('stop logging... @'+time.ctime()+"\n")
+					conSetup.disconnectAny(connections)
 				except Exception as inst:
 					#connection failed, log and exit
 					logger.printException(inst)
@@ -77,8 +74,9 @@ if __name__ == "__main__":
 			print("wait for retry ("+str(settings.waitDelay)+")")
 			time.sleep(settings.waitDelay)
 	except KeyboardInterrupt:
-		print("Interrupted, cleaning up")
-		disconnect(ipcon)
+		print(" Interrupted, cleaning up")
+		conSetup.disconnectAny(connections)
 		log.write("keyboard-interrupt happened @"+time.ctime()+"\n")
+		log.close()
 		freeLock()
 

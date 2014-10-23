@@ -13,7 +13,7 @@ from functools import partial
 import traceback
 from settings import SensorType
 
-class Setup(object):
+class SensorSetup(object):
 
 	def __init__(self, connection, sensors, cbtimes, cb_generic):
 		self.connection = connection

@@ -17,13 +17,21 @@ HOST = "192.168.2.60"
 PORT = 4223
 
 SENSORS={
-	"temp1": ["7B5", SensorType.temp],
-	"temp2": ["8js", SensorType.temp],
-	"humi1": ["7RY", SensorType.humi],
-	"ambi1": ["8Fw", SensorType.ambi],
-	"ambi2": ["8DJ", SensorType.ambi],
-	"baro1": ["bB7", SensorType.baro],
-	"temp3": ["8ms", SensorType.temp],
+	0: {
+		"host": {
+			"name": "192.168.2.60",
+			"port": 4223
+		},
+		"sensors": {
+			"temp1": ["7B5", SensorType.temp],
+			"temp2": ["8js", SensorType.temp],
+			"humi1": ["7RY", SensorType.humi],
+			"ambi1": ["8Fw", SensorType.ambi],
+			"ambi2": ["8DJ", SensorType.ambi],
+			"baro1": ["bB7", SensorType.baro],
+			"temp3": ["8ms", SensorType.temp],
+		}
+	}
 }
 
 TIMES={
@@ -63,5 +71,9 @@ SENSOR_UNITS=[
 # no manual change needed #
 ###########################
 
-tempSensors=len(list(filter(lambda a: True if SENSORS[a][1]==SensorType.temp else False, SENSORS)))
+tempSensors=0
+for i in SENSORS:
+	for j in SENSORS[i]['sensors']:
+		if SENSORS[i]['sensors'][j][1] == SensorType.temp:
+			tempSensors+=1
 

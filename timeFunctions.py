@@ -21,8 +21,8 @@ def preptime():
 		day = "0" + str(day)
 	else:
 		day = str(day)
-	if( month < 10:
-		month = "0"  str(month)
+	if month < 10:
+		month = "0" + str(month)
 	else:
 		month = str(month)
 	return month + "." + day + "." + year

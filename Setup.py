@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 try:
-	from tinkerforge.ip_connection import IPConnection
 	from tinkerforge.bricklet_temperature import Temperature
 	from tinkerforge.bricklet_humidity import Humidity
 	from tinkerforge.bricklet_ambient_light import AmbientLight

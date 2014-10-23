@@ -30,6 +30,7 @@ SENSORS={
 			"ambi2": ["8DJ", SensorType.ambi],
 			"baro1": ["bB7", SensorType.baro],
 			"temp3": ["8ms", SensorType.temp],
+			"humi2": ["9V5", SensorType.humi],
 		}
 	}
 }

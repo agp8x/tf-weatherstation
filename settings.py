@@ -12,17 +12,19 @@ class SensorType:
 
 
 #HOST = "localhost"
-HOST = "192.168.2.34"
+#HOST = "192.168.2.34"
+HOST = "192.168.2.60"
 PORT = 4223
 
-SENSORS=[
-	["temp1", "7B5", SensorType.temp],
-	["temp2", "8js", SensorType.temp],
-	["humi1", "7RY", SensorType.humi],
-	["ambi1", "8Fw", SensorType.ambi],
-	["ambi2", "8DJ", SensorType.ambi],
-	["baro1", "bB7", SensorType.baro],
-]
+SENSORS={
+	"temp1": ["7B5", SensorType.temp],
+	"temp2": ["8js", SensorType.temp],
+	"humi1": ["7RY", SensorType.humi],
+	"ambi1": ["8Fw", SensorType.ambi],
+	"ambi2": ["8DJ", SensorType.ambi],
+	"baro1": ["bB7", SensorType.baro],
+	"temp3": ["8ms", SensorType.temp],
+}
 
 TIMES={
 	SensorType.temp: 30000,
@@ -48,7 +50,7 @@ waitDelay = 10
 # only change when new sensor is added #
 ########################################
 
-SENSOR_VALUES=[
+SENSOR_UNITS=[
 	(0,''),
 	(100.0, '°C'),
 	(10.0, '%RH'),
@@ -61,6 +63,5 @@ SENSOR_VALUES=[
 # no manual change needed #
 ###########################
 
-tempSensors=len(list(filter(lambda a: True if a[2]==SensorType.temp else False,SENSORS)))
-NAMES=list(map(lambda a:a[0], SENSORS))
+tempSensors=len(list(filter(lambda a: True if SENSORS[a][1]==SensorType.temp else False, SENSORS)))
 

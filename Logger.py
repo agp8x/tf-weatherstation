@@ -12,21 +12,21 @@ import settings
 
 class Logger(object):
 	def __init__(self, log):
-		self.names = settings.NAMES
 		self.temp_sensors = settings.tempSensors
-		self.temp_prev_default=settings.prev_temps_default
-		self.prev_temps =[]
+		self.temp_prev_default = settings.prev_temps_default
+		self.prev_temps = []
 		for i in range(self.temp_sensors):
 			self.prev_temps.append(self.temp_prev_default)
 		self.temp_max_diff = settings.tempmaxdiff
 		self.log = log
 		self.records = settings.records
+		self.units = settings.SENSOR_UNITS
 	
 	def temp_rise(self,old,new,sensor):
 		if(old==self.temp_prev_default):
 			return True
 		if((old-new)>self.temp_max_diff or (new-old)>self.temp_max_diff):
-			self.log.write('error checking '+self.names[sensor]+';prev('+str(old)+');cur('+str(new)+'); ... @'+time.ctime()+"\n")
+			self.log.write('error checking '+sensor+';prev('+str(old)+');cur('+str(new)+'); ... @'+time.ctime()+"\n")
 			self.log.flush()
 			return False
 		else:
@@ -37,7 +37,7 @@ class Logger(object):
 	##########################################
 	def write_value(self,value,sensor):
 		# TODO: catch IOError
-		valuename=self.records+"/"+self.names[sensor]+"_"+preptime()
+		valuename=self.records+"/"+sensor+"_"+preptime()
 		valuelog=open(valuename,'a')
 		valuelog.write(str(value) + ';' + str(int(time.time())) +"\n")
 		valuelog.close()
@@ -45,17 +45,19 @@ class Logger(object):
 	##########################################
 	# generic callback	 					 #
 	##########################################
-	def cb_generic(self,value, sensor, type):
+	def cb_generic(self,value, sensor, type, supress = False):
 		if(type == SensorType.temp):
-			if(self.temp_rise(self.prev_temps[sensor],value,sensor)):
+			i = int(sensor[-1])-1 #sensor contains name, followed by int
+			if(self.temp_rise(self.prev_temps[i],value,sensor)):
 				self.write_value(value,sensor)
-				self.prev_temps[sensor]=value
+				self.prev_temps[i]=value
 		elif (type == SensorType.none):
 			return
 		else:
 			self.write_value(value,sensor)
-		unit=settings.SENSOR_VALUES[type]
-		print(self.names[sensor] +': ' + str(value/unit[0]) + ' '+unit[1]+', ' + str(time.ctime()))
+		unit=self.units[type]
+		if not supress:
+			print(sensor +': ' + str(value/unit[0]) + ' '+unit[1]+', ' + str(time.ctime()))
 	
 	###########################################
 	# exception logging						  #

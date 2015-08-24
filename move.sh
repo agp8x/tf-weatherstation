@@ -1,7 +1,4 @@
 #!/bin/bash
-#mv records/humi* arch/
-#mv records/ambi* arch/
-#mv records/temp* arch/
 cd records
 #echo $1
 for f in {temp,humi,ambi,baro}*
@@ -11,7 +8,7 @@ do
 	if [ "$day" == "$1" ]; then
 		echo "$f today"
 	else
-	#	echo "$f old, -->move"
+		echo "$f old, -->move"
 		mv $f ../arch
 	fi
 done

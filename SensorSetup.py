@@ -96,4 +96,3 @@ class SensorSetup(object):
 			obj = self.genericSensorSetup(name, sensor)
 			connected.append(obj)
 		return connected
-

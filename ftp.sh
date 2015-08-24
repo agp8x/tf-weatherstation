@@ -11,16 +11,14 @@ if [ ! -f $CONFIG ]; then
 	echo "configuration file not found, exiting! (see ftpconfig.sample.xml)"
 	exit 1;
 fi
-read DIR SFTPUSER URL SFTPPASS < <(xmlstarlet sel -t -v "//dir" -o $'\t' -v "//sftpuser" -o $'\t' -v "//url" -o $'\t' -v "//sftppass" $CONFIG)
+read DIR SFTPUSER URL TMPDIR SFTPPASS < <(xmlstarlet sel -t -v "//dir" -o $'\t' -v "//sftpuser" -o $'\t' -v "//url" -o $'\t' -v "//tmp-dir" -o $'\t' -v "//sftppass" $CONFIG)
 
 cd $DIR || exit 1
-cp records/humi* ftp/
-cp records/ambi* ftp/
-cp records/temp* ftp/
-cp records/baro* ftp/
-cd ftp
-
-
+cp records/humi* $TMPDIR/
+cp records/ambi* $TMPDIR/
+cp records/temp* $TMPDIR/
+cp records/baro* $TMPDIR/
+pushd $TMPDIR
 if [ -z $SFTPPASS ]; then
 	#sftp-key-auth
 	sftp -oBatchMode=no -b - $SFTPUSER "$FTP_COMMAND"
@@ -29,7 +27,7 @@ else
 	sshpass -p $SFTPPASS sftp -oBatchMode=no -b - $SFTPUSER "$FTP_COMMAND"
 fi
 rm humi* ambi* temp* baro*
-cd ..
+popd
 wget $URL -O logs/wget_recent -q
 echo "ftpupload">>logs/ftp.log
 date>>logs/ftp.log

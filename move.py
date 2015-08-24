@@ -4,17 +4,26 @@
 import time
 import os
 from timeFunctions import *
+from settings import locks, logs
+from shutil import move
 
-# TODO: path from settings
+checkfile=locks+'/records_moved'
 
-checkfile='locks/records_moved'
-
+if not os.path.exists(logs+"/move.log"):
+	open(logs+"/move.log", 'w').close()
 if not os.path.exists(checkfile):
-	check=open(checkfile,'w')
-	check.write('')
-	check.close()
+	open(checkfile,'w').close()
+if not os.path.exists("arch"):
+	os.mkdir("arch", 0000755)
 
-log=open("logs/move.log",'a')
+def mycopy(keep):
+	names = os.listdir("records")
+	for name in names:
+		if keep in name:
+			continue
+		move(os.path.join("records", name), "arch")
+
+log=open(logs+"/move.log",'a')
 
 check=open(checkfile,'r')
 temp=check.read()
@@ -32,7 +41,7 @@ else:
 		log.flush()
 		if not os.path.exists("arch"):
 			os.mkdir("arch")
-		os.system("./move.sh "+preptime())	# TODO: replace me with: https://docs.python.org/2/library/shutil.html#module-shutil
+		mycopy(preptime())
 		check.close()
 		check=open(checkfile,'w')
 		check.write(str(time.time()))

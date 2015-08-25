@@ -1,6 +1,6 @@
 #Weatherstation
 ##Overview
-Python2, Bash, Tinkerforge
+Python (2/3), Bash, Tinkerforge
 
 ## Setup
 
@@ -15,7 +15,7 @@ Python2, Bash, Tinkerforge
 			* Callbackzeit
 			* Divisor
 			* Einheit
-	* *tempmaxdiff*: Maximaler Unterschied zwischen *SensorType.temp*-Callbacks
+	* *tempmaxdiff*: Maximaler Unterschied zwischen zwei *SensorType.temp*-Callbacks des gleichen Sensors
 	* *prev_temps_default*: Hilfswert für Berechnung von *tempmaxdiff*
 	* *logs*: Ordner für Logs
 	* *locks*: Ordner für Locks

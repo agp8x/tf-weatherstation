@@ -59,7 +59,7 @@ class Settings(dict):
 		self[name]=value
 	def __delattr__(self,name):
 		del self[name]
-def load_json(filename="set.json"):
+def load_json(filename="config.json"):
 	values=json.load(open('set.json'), object_hook=Settings)
 	sensors_name="hosts"
 	if sensors_name in values:

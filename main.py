@@ -29,17 +29,17 @@ logi = setupLogger()
 def check_dirs_and_files():
 	# log
 	if not os.path.exists(settings.logs):
-		os.mkdir(settings.logs, 0000755)
+		os.mkdir(settings.logs, 0o000755)
 	if not os.path.exists(settings.exceptionlog):
 		file=open(settings.exceptionlog, 'w')
 		file.write("<exceptions></exceptions>")
 		file.close()
 	# lock
 	if not os.path.exists(settings.locks):
-		os.mkdir(settings.locks, 0000755)
+		os.mkdir(settings.locks, 0o000755)
 	# records
 	if not os.path.exists(settings.records):
-		os.mkdir(settings.records, 0000755)
+		os.mkdir(settings.records, 0o000755)
 
 def obtainLock(lockfile = settings.lockname):
 	#TODO: path
@@ -59,6 +59,10 @@ def formatHost(host):
 	return "%s:%d" % (host['name'], host['port'])
 
 if __name__ == "__main__":
+	try:
+		input = raw_input
+	except NameError:
+		pass
 	check_dirs_and_files()
 	try:
 		logi.info("setting up all sensors")
@@ -80,7 +84,7 @@ if __name__ == "__main__":
 						#connection failed, log and exit
 						#TODO: logger.printException(inst)
 						logi.error("connection failed: "+str(inst))
-				raw_input("Press key to restart\n")
+				input("Press key to restart\n")
 				logi.info("stop logging... @" + time.ctime() + "\n")
 				conSetup.disconnectAny(connections)
 				freeLock()

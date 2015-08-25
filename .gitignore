@@ -4,4 +4,6 @@ bin/*
 *.class
 build/
 *.pyc
+_*
+!__init__.py
 

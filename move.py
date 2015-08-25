@@ -29,7 +29,7 @@ checkfile=os.path.join(locks,movelock)
 if not os.path.exists(checkfile):
 	open(checkfile,'w').close()
 if not os.path.exists(arch):
-	os.mkdir(arch, 0000755)
+	os.mkdir(arch, 0o000755)
 
 def mycopy(keep):
 	names = os.listdir(records)

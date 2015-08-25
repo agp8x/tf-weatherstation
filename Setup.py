@@ -14,6 +14,7 @@ except ImportError:
 from functools import partial
 import traceback
 from settings import SensorType
+from settings import settings
 
 class ConnectionSetup(object):
 	def __init__(self, log):
@@ -24,12 +25,12 @@ class ConnectionSetup(object):
 		ipcon.connect(host['name'], host['port'])
 		return (ipcon)
 	
-	def setupConnectionAndSensors(self, host, sensors, cbtimes, cb_generic):
+	def setupConnectionAndSensors(self, host, sensors, cb_generic):
 		hostname = host['name']
 		port = host['port']
 		ipcon = IPConnection()
 		ipcon.connect(hostname, port)
-		sensorSetup = SensorSetup(ipcon, sensors, cbtimes, cb_generic, self.log)
+		sensorSetup = SensorSetup(ipcon, sensors, cb_generic, self.log)
 		connectedSensors = sensorSetup.setupSensors()
 		return (ipcon, connectedSensors)
 	
@@ -40,10 +41,9 @@ class ConnectionSetup(object):
 
 class SensorSetup(object):
 
-	def __init__(self, connection, sensors, cbtimes, cb_generic, log):
+	def __init__(self, connection, sensors, cb_generic, log):
 		self.connection = connection
 		self.sensors = sensors
-		self.cbtimes = cbtimes
 		self.cb_generic = cb_generic
 		self.log = log
 		self._previous_sensors={}
@@ -117,7 +117,7 @@ class SensorSetup(object):
 	def genericSensorSetup(self, name, sensor):
 		status = "setup device "+ sensor[0] +" ("+ name +"):"
 		callback = self.parametrizedCallback(name, type=sensor[1])
-		cbtime = self.cbtimes[sensor[1]]
+		cbtime = settings.sensor_properties[sensor[1]][0]
 		obj = None
 		if sensor[1] is SensorType.temp:
 			var = self.getTemp()
@@ -141,7 +141,7 @@ class SensorSetup(object):
 			obj = self.__setupSensor__(callback, sensor[0], cbtime, var)
 			self.log.info("%s OK", status)
 		except Exception as e:
-			self.log.error("%s FAIL:: %s",status, e)
+			self.log.error("%s FAIL:: %s (%s)",status, e,traceback.format_exc())
 		return obj
 
 	def setupSensors(self):

@@ -1,0 +1,40 @@
+{
+	"hosts": {
+		"irtest": {
+			"host":{
+				"name": "localhost",
+				"port":4223
+			},
+			"sensors":{
+				"iram": ["c8w", "SensorType.iram"],
+				"irob": ["c8w", "SensorType.irob"]
+			}
+		}
+	},
+	"sensor_properties":{
+		"SensorType.none": [0, 0, ""],
+		"SensorType.temp": [30000, 100.0, "°C"],
+		"SensorType.humi": [30000, 10.0, "%RH"],
+		"SensorType.ambi": [60000, 10.0, "Lux"],
+		"SensorType.baro": [60000, 1000, "mbar"],
+		"SensorType.rain": [0, 2.5, "l/qm"],
+		"SensorType.iram": [1000, 10.0, "°C"],
+		"SensorType.irob": [1000, 10.0, "°C"]
+	},
+	"tempmaxdiff": 200,
+	"prev_temps_default": 20000,
+	"logs": "logs",
+	"locks": "locks",
+	"records": "records",
+	"arch": "arch",
+	"lockname": "all.lock",
+	"logname": "logging.log",
+	"exceptionlog": "exceptions.xml",
+	"recordlog": "record.log",
+	"movelog": "move.log",
+	"movelock": "last_move",
+	"waitDelay" : 10,
+	"loglevel": "info",
+	"datalog": "info",
+	"dataecho": "info"
+}

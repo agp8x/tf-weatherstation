@@ -7,7 +7,8 @@ import logging
 from shutil import move
 
 from timeFunctions import *
-from settings import locks, logs, arch, records, movelog, movelock
+from settings import settings
+#from settings import locks, logs, arch, records, movelog, movelock
 
 def setupLogger():
 	log = logging.getLogger("weatherstation.move")
@@ -17,26 +18,26 @@ def setupLogger():
 	formatter = logging.Formatter('%(asctime)s:[%(levelname)s] - %(message)s')
 	ch.setFormatter(formatter)
 	log.addHandler(ch)
-	fh = logging.FileHandler(os.path.join(logs, movelog))
+	fh = logging.FileHandler(os.path.join(settings.logs, settings.movelog))
 	fh.setFormatter(formatter)
 	log.addHandler(fh)
 	return log
 
 log = setupLogger()
 
-checkfile=os.path.join(locks,movelock)
+checkfile=os.path.join(settings.locks,settings.movelock)
 
 if not os.path.exists(checkfile):
 	open(checkfile,'w').close()
-if not os.path.exists(arch):
+if not os.path.exists(settings.arch):
 	os.mkdir(arch, 0o000755)
 
 def mycopy(keep):
-	names = os.listdir(records)
+	names = os.listdir(settings.records)
 	for name in names:
 		if keep in name:
 			continue
-		move(os.path.join(records, name), arch)
+		move(os.path.join(settings.records, name), settings.arch)
 
 check=open(checkfile,'r')
 temp=check.read()

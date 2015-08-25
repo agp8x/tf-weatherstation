@@ -5,12 +5,11 @@ import time
 import sys
 import traceback
 import xml.etree.ElementTree as ET
-import logging
 import os
 
 from timeFunctions import *
-from settings import SensorType
-import settings
+from settings import SensorType, setup_data_echo, setup_data_log
+from settings import settings
 
 class Logger(object):
 	def __init__(self, log):
@@ -22,29 +21,8 @@ class Logger(object):
 		self.temp_max_diff = settings.tempmaxdiff
 		self.log = log
 		self.records = settings.records
-		self.units = settings.SENSOR_UNITS
-		self.dataecho = self.setup_data_echo()
-		self.datalog = self.setup_data_log()
-
-	def setup_data_log(self):
-		log = logging.getLogger("weatherstation.datalog")
-		log.setLevel(logging.INFO)
-		fh = logging.FileHandler(os.path.join(settings.records, settings.recordlog))
-		fformat = logging.Formatter()
-		fh.setFormatter(fformat)
-		log.addHandler(fh)
-		log.propagate = False
-		return log
-
-	def setup_data_echo(self):
-		log = logging.getLogger("weatherstation.data")
-		log.setLevel(logging.INFO)
-		ch = logging.StreamHandler()
-		formatter = logging.Formatter('%(asctime)s:[DATA] - %(message)s')
-		ch.setFormatter(formatter)
-		log.addHandler(ch)
-		log.propagate = False
-		return log
+		self.dataecho = setup_data_echo()
+		self.datalog = setup_data_log()
 	
 	def temp_rise(self, old, new,sensor):
 		if(old == self.temp_prev_default):
@@ -79,16 +57,15 @@ class Logger(object):
 			return
 		else:
 			self.write_value(value, sensor)
-		unit = self.units[type]
+		unit = settings.sensor_properties[type]
 		if not supress:
-			self.dataecho.info(sensor + ': ' + str(value/unit[0]) + ' ' + unit[1])
+			self.dataecho.info(sensor + ': ' + str(value/unit[1]) + ' ' + unit[2])
 	
 	###########################################
 	# exception logging						  #
 	###########################################
 	def printException(self, inst):
-		#TODO: LOG
-		tree = ET.parse(settings.exceptionlog)
+		tree = ET.parse(os.path.join(settings.log,settings.exceptionlog))
 		root = tree.getroot()
 		new = ET.Element('exception', {'class':str( type(inst) ).split("'")[1], 'date':str( time.ctime() ), 'time':str( int(time.time()) ), 'type':str(inst)})
 		new.text = traceback.format_exc()

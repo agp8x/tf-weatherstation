@@ -1,30 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-  
 
-import os.path
 import os
 import time
-import logging
 
 from Logger import Logger
 from Setup import ConnectionSetup
-import settings
+from settings import settings, setupLogger
 
-def setupLogger():
-	log = logging.getLogger("weatherstation")
-	log.setLevel(logging.INFO)
-	ch = logging.StreamHandler()
-	ch.setLevel(logging.DEBUG)
-	#formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-	formatter = logging.Formatter('%(asctime)s:[%(levelname)s] - %(message)s')
-	ch.setFormatter(formatter)
-	log.addHandler(ch)
-	fh = logging.FileHandler(os.path.join(settings.logs, settings.logname))
-	fh.setFormatter(formatter)
-	log.addHandler(fh)
-	return log
-
-logi = setupLogger()
+log = setupLogger()
+lockpath=os.path.join(settings.locks,settings.lockname)
 
 def check_dirs_and_files():
 	# log
@@ -41,19 +26,17 @@ def check_dirs_and_files():
 	if not os.path.exists(settings.records):
 		os.mkdir(settings.records, 0o000755)
 
-def obtainLock(lockfile = settings.lockname):
-	#TODO: path
-	if not os.path.exists(lockfile):
-		lock = open(lockfile, 'w')
+def obtainLock():
+	if not os.path.exists(lockpath):
+		lock = open(lockpath, 'w')
 		lock.write( str(time.time()) )
 		lock.close()
 		return True
 	return False
 
-def freeLock(lockfile = settings.lockname):
-	#TODO: path
-	if os.path.exists(lockfile):
-		os.remove(lockfile)
+def freeLock():
+	if os.path.exists(lockpath):
+		os.remove(lockpath)
 
 def formatHost(host):
 	return "%s:%d" % (host['name'], host['port'])
@@ -64,36 +47,36 @@ if __name__ == "__main__":
 	except NameError:
 		pass
 	check_dirs_and_files()
+	conSetup = ConnectionSetup(log)
+	connectedSensors = []
+	connections = []
 	try:
-		logi.info("setting up all sensors")
+		log.info("setting up all sensors")
 		while True:
 			if obtainLock():
-				logger = Logger(logi)
-				connections = []
-				connectedSensors = []
-				for con in settings.SENSORS:
+				logger = Logger(log)
+				for con in settings.hosts:
 					try:
-						logi.info("connecting to host '"+str(con)+"'")
-						con = settings.SENSORS[con]
-						conSetup = ConnectionSetup(logi)
-						connection, sensors = conSetup.setupConnectionAndSensors(con['host'], con['sensors'], settings.TIMES, logger.cb_generic)
+						log.info("connecting to host '"+str(con)+"'")
+						con = settings.hosts[con]
+						connection, sensors = conSetup.setupConnectionAndSensors(con['host'], con['sensors'], logger.cb_generic)
 						connections.append(connection)
 						connectedSensors.append(sensors)
-						logi.info("started logging at " + formatHost(con['host']))
+						log.info("started logging at " + formatHost(con['host']))
 					except Exception as inst:
 						#connection failed, log and exit
 						#TODO: logger.printException(inst)
-						logi.error("connection failed: "+str(inst))
+						log.error("connection failed: "+str(inst))
 				input("Press key to restart\n")
-				logi.info("stop logging... @" + time.ctime() + "\n")
+				log.info("stop logging... @" + time.ctime() + "\n")
 				conSetup.disconnectAny(connections)
 				freeLock()
 			else:
-				logi.critical("lock collision: lock 'all' active")
-			logi.info("wait for retry (" + str(settings.waitDelay) + ")")
+				log.critical("lock collision: lock 'all' active")
+			log.info("wait for retry (" + str(settings.waitDelay) + ")")
 			time.sleep(settings.waitDelay)
 	except KeyboardInterrupt:
-		logi.info("keyboard-interrupt happened, cleaning up")
+		log.info("keyboard-interrupt happened, cleaning up")
 		conSetup.disconnectAny(connections)
 		freeLock()
 

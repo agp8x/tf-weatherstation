@@ -19,7 +19,7 @@ def setupLogger():
 	formatter = logging.Formatter('%(asctime)s:[%(levelname)s] - %(message)s')
 	ch.setFormatter(formatter)
 	log.addHandler(ch)
-	fh = logging.FileHandler(os.path.join(settings.logs, "logging.log"))
+	fh = logging.FileHandler(os.path.join(settings.logs, settings.logname))
 	fh.setFormatter(formatter)
 	log.addHandler(fh)
 	return log
@@ -30,8 +30,6 @@ def check_dirs_and_files():
 	# log
 	if not os.path.exists(settings.logs):
 		os.mkdir(settings.logs, 0000755)
-	#if not os.path.exists(settings.logname):
-	#	open(settings.logname, 'w').close()
 	if not os.path.exists(settings.exceptionlog):
 		file=open(settings.exceptionlog, 'w')
 		file.write("<exceptions></exceptions>")
@@ -44,6 +42,7 @@ def check_dirs_and_files():
 		os.mkdir(settings.records, 0000755)
 
 def obtainLock(lockfile = settings.lockname):
+	#TODO: path
 	if not os.path.exists(lockfile):
 		lock = open(lockfile, 'w')
 		lock.write( str(time.time()) )
@@ -52,6 +51,7 @@ def obtainLock(lockfile = settings.lockname):
 	return False
 
 def freeLock(lockfile = settings.lockname):
+	#TODO: path
 	if os.path.exists(lockfile):
 		os.remove(lockfile)
 

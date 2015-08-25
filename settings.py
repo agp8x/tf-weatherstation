@@ -9,31 +9,14 @@ class SensorType:
 	ambi = 3 # ambient light bricklet
 	baro = 4 # barometer bricklet
 	rain = 5 # IO4 #TODO
-	iram = 6 # temperature ir bricklet, ambient #TODO
-	irob = 7 # temperature ir bricklet, object #TODO
-"""
-	0: {
-		"host": {
-			"name": "192.168.2.60",
-			"port": 4223
-		},
-		"sensors": {
-			"temp1": ["7B5", SensorType.temp],
-			"temp2": ["8js", SensorType.temp],
-			"humi1": ["7RY", SensorType.humi],
-			"ambi1": ["8Fw", SensorType.ambi],
-			"ambi2": ["8DJ", SensorType.ambi],
-			"baro1": ["bB7", SensorType.baro],
-			"temp3": ["8ms", SensorType.temp],
-			"humi2": ["9V5", SensorType.humi],
-		}
-	},"""
+	iram = 6 # temperature ir bricklet, ambient
+	irob = 7 # temperature ir bricklet, object
+
 SENSORS={
 	"irtest": {
 		"host":{"name": "localhost", "port":4223},
 		"sensors":{
 			"iram": ["c8w", SensorType.iram],
-			"iram2": ["c8ws", SensorType.iram],
 			"irob": ["c8w", SensorType.irob]
 		}
 	}
@@ -44,9 +27,9 @@ TIMES={
 	SensorType.humi: 30000,
 	SensorType.ambi: 60000,
 	SensorType.baro: 60000,
-	SensorType.rain: 60000,
-	SensorType.iram: 1000,
-	SensorType.irob: 1000,
+	SensorType.rain: 0,
+	SensorType.iram: 60000,
+	SensorType.irob: 60000,
 }
 
 tempmaxdiff=200 # 200== 2.0 C
@@ -55,11 +38,15 @@ prev_temps_default=20000
 logs='logs'
 locks='locks'
 records='records'
+arch='arch'
 
-#TODO: add move-log, move-lock, logging instead of writing to files
+#TODO: lockname, exceptionslog: path.join
 lockname=locks+"/all.lock"
-logname=logs+"/all.log"
+logname="logging.log"
 exceptionlog=logs+"/exceptions.xml"
+recordlog="record.log"
+movelog="move.log"
+movelock="last_move"
 
 waitDelay = 10
 
@@ -87,4 +74,22 @@ for i in SENSORS:
 	for j in SENSORS[i]['sensors']:
 		if SENSORS[i]['sensors'][j][1] == SensorType.temp:
 			tempSensors+=1
+
+"""
+	0: {
+		"host": {
+			"name": "192.168.2.60",
+			"port": 4223
+		},
+		"sensors": {
+			"temp1": ["7B5", SensorType.temp],
+			"temp2": ["8js", SensorType.temp],
+			"humi1": ["7RY", SensorType.humi],
+			"ambi1": ["8Fw", SensorType.ambi],
+			"ambi2": ["8DJ", SensorType.ambi],
+			"baro1": ["bB7", SensorType.baro],
+			"temp3": ["8ms", SensorType.temp],
+			"humi2": ["9V5", SensorType.humi],
+		}
+	},"""
 

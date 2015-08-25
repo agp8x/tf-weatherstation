@@ -13,12 +13,11 @@ Python2, Bash, Tinkerforge
 		* SensorTyp
 	3. Gewünschte Callback-zeiten in *TIMES* anpassen
 3. Tinkerforge-python-bindings installieren
-4. `all.py` starten, um Aufzeichnung zu starten
+4. `main.py` starten, um Aufzeichnung zu starten
 	* Aufzeichnung des aktuellen Tages werden in `records` gespeichert
 	* (ftp.sh bzw move.py) Nach dem Upload und dem Tagesende werden die Aufzeichnungen nach `arch` verschoben
 5. Cronjob für Upload mit ftp.sh einrichten
 
 # TODOS
-* Logging auf loghandler umstellen [https://docs.python.org/2/library/logging.html#handler-objects](https://docs.python.org/2/library/logging.html#handler-objects)
 * auf python3 umstellen
 * settings aus python auslagern

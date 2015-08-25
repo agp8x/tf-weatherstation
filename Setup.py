@@ -46,6 +46,7 @@ class SensorSetup(object):
 		self.cbtimes = cbtimes
 		self.cb_generic = cb_generic
 		self.log = log
+		self._previous_sensors={}
 
 	def parametrizedCallback(self, name, type):
 		return partial(self.cb_generic, sensor=name, type=type)
@@ -100,14 +101,21 @@ class SensorSetup(object):
 	#	return obj, setcb, get, cb
 
 	def __setupSensor__(self, callback, id, cbtime, var):
-		obj = var[0](id, self.connection)		# construct instance
+		obj = None
+		if id in self._previous_sensors:
+			self.log.debug("reusing instance for %s", id)
+			obj = self._previous_sensors[id]	# restore instance for another callback
+		else:
+			self.log.debug("new instance for %s", id)
+			obj = var[0](id, self.connection)	# construct instance
+			self._previous_sensors[id] = obj	# save instance for multiple callbacks
 		var[1](obj, cbtime)						# set callback period
 		callback(var[2](obj ), supress=True)	# execute callback with raw getter as value
 		obj.register_callback(var[3], callback)	# register callback
 		return obj
 
 	def genericSensorSetup(self, name, sensor):
-		status = "setup device "+ sensor[0] +" ("+ name +"): "
+		status = "setup device "+ sensor[0] +" ("+ name +"):"
 		callback = self.parametrizedCallback(name, type=sensor[1])
 		cbtime = self.cbtimes[sensor[1]]
 		obj = None
@@ -119,22 +127,21 @@ class SensorSetup(object):
 			var = self.getAmbi()
 		elif sensor[1] is SensorType.baro:
 			var = self.getBaro()
+		elif sensor[1] is SensorType.rain:
+			self.log.error("rain is not yet implemented (%s, %s)", sensor[0], name)
+			return None
 		elif sensor[1] is SensorType.iram:
 			var = self.getIram()
 		elif sensor[1] is SensorType.irob:
 			var = self.getIrob()
 		else:
-			self.log.error("FAILED TO LOAD "+name)
+			self.log.error("%s FAIL (unknown type)", status)
 			return None
 		try:
 			obj = self.__setupSensor__(callback, sensor[0], cbtime, var)
-			status += "OK"
-			self.log.info(status)
+			self.log.info("%s OK", status)
 		except Exception as e:
-			status += "FAIL"
-			#print(e)
-			#print(traceback.format_exc())
-			self.log.error(status)
+			self.log.error("%s FAIL:: %s",status, e)
 		return obj
 
 	def setupSensors(self):

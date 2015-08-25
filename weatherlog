@@ -13,8 +13,8 @@
 # Aktionen
 case "$1" in
     start)
-	cd /home/XXXX/temp/python
-	sudo -u XXXX screen -dmS recordall python all.py&
+	cd /home/XXXX/weather
+	sudo -u XXXX screen -dmS recordall python main.py&
         ;;
     stop)
        # /opt/beispiel stop

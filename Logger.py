@@ -29,7 +29,7 @@ class Logger(object):
 	def setup_data_log(self):
 		log = logging.getLogger("weatherstation.datalog")
 		log.setLevel(logging.INFO)
-		fh = logging.FileHandler(os.path.join(settings.records, "records.log"))
+		fh = logging.FileHandler(os.path.join(settings.records, settings.recordlog))
 		fformat = logging.Formatter()
 		fh.setFormatter(fformat)
 		log.addHandler(fh)
@@ -87,6 +87,7 @@ class Logger(object):
 	# exception logging						  #
 	###########################################
 	def printException(self, inst):
+		#TODO: LOG
 		tree = ET.parse(settings.exceptionlog)
 		root = tree.getroot()
 		new = ET.Element('exception', {'class':str( type(inst) ).split("'")[1], 'date':str( time.ctime() ), 'time':str( int(time.time()) ), 'type':str(inst)})

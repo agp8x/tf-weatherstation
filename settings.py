@@ -4,19 +4,14 @@
 #class SensorType(Enum):
 class SensorType:
 	none = 0
-	temp = 1
-	humi = 2
-	ambi = 3
-	baro = 4
-	rain = 5
-
-
-#HOST = "localhost"
-#HOST = "192.168.2.34"
-HOST = "192.168.2.60"
-PORT = 4223
-
-SENSORS={
+	temp = 1 # temperature bricklet
+	humi = 2 # humidity bricklet
+	ambi = 3 # ambient light bricklet
+	baro = 4 # barometer bricklet
+	rain = 5 # IO4 #TODO
+	iram = 6 # temperature ir bricklet, ambient #TODO
+	irob = 7 # temperature ir bricklet, object #TODO
+"""
 	0: {
 		"host": {
 			"name": "192.168.2.60",
@@ -32,6 +27,15 @@ SENSORS={
 			"temp3": ["8ms", SensorType.temp],
 			"humi2": ["9V5", SensorType.humi],
 		}
+	},"""
+SENSORS={
+	"irtest": {
+		"host":{"name": "localhost", "port":4223},
+		"sensors":{
+			"iram": ["c8w", SensorType.iram],
+			"iram2": ["c8ws", SensorType.iram],
+			"irob": ["c8w", SensorType.irob]
+		}
 	}
 }
 
@@ -40,6 +44,9 @@ TIMES={
 	SensorType.humi: 30000,
 	SensorType.ambi: 60000,
 	SensorType.baro: 60000,
+	SensorType.rain: 60000,
+	SensorType.iram: 1000,
+	SensorType.irob: 1000,
 }
 
 tempmaxdiff=200 # 200== 2.0 C
@@ -49,6 +56,7 @@ logs='logs'
 locks='locks'
 records='records'
 
+#TODO: add move-log, move-lock, logging instead of writing to files
 lockname=locks+"/all.lock"
 logname=logs+"/all.log"
 exceptionlog=logs+"/exceptions.xml"
@@ -65,7 +73,9 @@ SENSOR_UNITS=[
 	(10.0, '%RH'),
 	(10.0, 'Lux'),
 	(1000, 'mbar'),
-	(2.5, 'l/qm')
+	(2.5, 'l/qm'),
+	(10.0, '°C'),
+	(10.0, '°C')
 ]
 
 ###########################

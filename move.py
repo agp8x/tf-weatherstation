@@ -3,9 +3,9 @@
 
 import time
 import os
+from shutil import move
 from timeFunctions import *
 from settings import locks, logs
-from shutil import move
 
 checkfile=locks+'/records_moved'
 

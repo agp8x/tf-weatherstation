@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 try:
+	from tinkerforge.ip_connection import IPConnection
 	from tinkerforge.bricklet_temperature import Temperature
 	from tinkerforge.bricklet_humidity import Humidity
 	from tinkerforge.bricklet_ambient_light import AmbientLight
 	from tinkerforge.bricklet_barometer import Barometer
+	from tinkerforge.bricklet_temperature_ir import BrickletTemperatureIR
 except ImportError:
 	print("package 'tinkerforge' not installed, canceling")
 	raise
@@ -13,13 +15,37 @@ from functools import partial
 import traceback
 from settings import SensorType
 
+class ConnectionSetup(object):
+	def __init__(self, log):
+		self.log = log
+		
+	def setupConnection(self, host):
+		ipcon = IPConnection()
+		ipcon.connect(host['name'], host['port'])
+		return (ipcon)
+	
+	def setupConnectionAndSensors(self, host, sensors, cbtimes, cb_generic):
+		hostname = host['name']
+		port = host['port']
+		ipcon = IPConnection()
+		ipcon.connect(hostname, port)
+		sensorSetup = SensorSetup(ipcon, sensors, cbtimes, cb_generic, self.log)
+		connectedSensors = sensorSetup.setupSensors()
+		return (ipcon, connectedSensors)
+	
+	def disconnectAny(self, connections):
+		for connection in connections:
+			if not connection.get_connection_state() is IPConnection.CONNECTION_STATE_DISCONNECTED:
+				connection.disconnect()
+
 class SensorSetup(object):
 
-	def __init__(self, connection, sensors, cbtimes, cb_generic):
+	def __init__(self, connection, sensors, cbtimes, cb_generic, log):
 		self.connection = connection
 		self.sensors = sensors
 		self.cbtimes = cbtimes
 		self.cb_generic = cb_generic
+		self.log = log
 
 	def parametrizedCallback(self, name, type):
 		return partial(self.cb_generic, sensor=name, type=type)
@@ -52,6 +78,20 @@ class SensorSetup(object):
 		cb = Barometer.CALLBACK_AIR_PRESSURE
 		return obj, setcb, get, cb
 
+	def getIram(self):
+		obj = BrickletTemperatureIR						# Object
+		setcb = obj.set_ambient_temperature_callback_period	# set-callback-period-method-pointer
+		get = obj.get_ambient_temperature					# value-get-method-pointer
+		cb = BrickletTemperatureIR.CALLBACK_AMBIENT_TEMPERATURE			# callback identifier
+		return obj, setcb, get, cb
+
+	def getIrob(self):
+		obj = BrickletTemperatureIR						# Object
+		setcb = obj.set_object_temperature_callback_period	# set-callback-period-method-pointer
+		get = obj.get_object_temperature					# value-get-method-pointer
+		cb = BrickletTemperatureIR.CALLBACK_OBJECT_TEMPERATURE			# callback identifier
+		return obj, setcb, get, cb
+
 	#def getNew(self):
 	#	obj = Bricklet						# Object
 	#	setcb = obj.set_XXX_callback_period	# set-callback-period-method-pointer
@@ -79,14 +119,22 @@ class SensorSetup(object):
 			var = self.getAmbi()
 		elif sensor[1] is SensorType.baro:
 			var = self.getBaro()
+		elif sensor[1] is SensorType.iram:
+			var = self.getIram()
+		elif sensor[1] is SensorType.irob:
+			var = self.getIrob()
+		else:
+			self.log.error("FAILED TO LOAD "+name)
+			return None
 		try:
 			obj = self.__setupSensor__(callback, sensor[0], cbtime, var)
 			status += "OK"
+			self.log.info(status)
 		except Exception as e:
 			status += "FAIL"
 			#print(e)
 			#print(traceback.format_exc())
-		print(status)
+			self.log.error(status)
 		return obj
 
 	def setupSensors(self):
@@ -96,3 +144,4 @@ class SensorSetup(object):
 			obj = self.genericSensorSetup(name, sensor)
 			connected.append(obj)
 		return connected
+

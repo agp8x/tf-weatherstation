@@ -8,8 +8,8 @@ import xml.etree.ElementTree as ET
 import os
 
 from timeFunctions import *
-from settings import SensorType, setup_data_echo, setup_data_log
-from settings import settings
+from config import SensorType, setup_data_echo, setup_data_log
+from config import settings
 
 class Logger(object):
 	def __init__(self, log):

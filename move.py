@@ -7,8 +7,7 @@ import logging
 from shutil import move
 
 from timeFunctions import *
-from settings import settings
-#from settings import locks, logs, arch, records, movelog, movelock
+from config import settings
 
 def setupLogger():
 	log = logging.getLogger("weatherstation.move")

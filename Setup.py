@@ -15,8 +15,8 @@ except ImportError:
 	print("package 'tinkerforge' not installed, canceling")
 	raise Exception("package 'tinkerforge' not installed, canceling")
 
-from settings import SensorType
-from settings import settings
+from config import SensorType
+from config import settings
 
 class ConnectionSetup(object):
 	def __init__(self, log):

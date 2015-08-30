@@ -6,7 +6,7 @@ import time
 
 from Logger import Logger
 from Setup import ConnectionSetup
-from settings import settings, setupLogger
+from config import settings, setupLogger
 
 log = setupLogger()
 lockpath=os.path.join(settings.locks,settings.lockname)

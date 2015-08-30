@@ -49,3 +49,4 @@ Optional: Upload der Aufzeichnungen mit SFTP an einem Server (beinhaltet Archivi
 
 # TODOS
 * TODOS ausdenken
+* rugged approach [http://www.tinkerforge.com/en/doc/Tutorials/Tutorial_Rugged/Tutorial.html](http://www.tinkerforge.com/en/doc/Tutorials/Tutorial_Rugged/Tutorial.html)

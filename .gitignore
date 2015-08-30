@@ -4,6 +4,7 @@ arch/
 locks/
 logs/
 records/
+.idea/
 bin/
 bin/*
 *~

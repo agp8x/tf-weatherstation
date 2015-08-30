@@ -32,13 +32,17 @@ Python (2/3), Bash, Tinkerforge
 	* *dataecho*: Loglevel für Wiedergabe der Aufzeichnungen (warn, error,critical verhindern Wiedergabe)
 2. Tinkerforge-python-bindings installieren
 3. `main.py` starten, um Aufzeichnung zu starten
-	* Aufzeichnung des aktuellen Tages werden in `records` gespeichert
+	* Aufzeichnung des aktuellen Tages werden in *records* gespeichert
 
-Optional: Upload der Aufzeichnungen mit SFTP an einem Server:
+Optional: Verschieben der Aufzeichnungen in ein Archiv:
 
-4. Pfade, Urls und Benutzer in `ftpconfig.xml` anpassen (Vorlage: `ftpconfig.sample.xml`)
+4. `move.py` z.B. als Cronjob starten
+
+Optional: Upload der Aufzeichnungen mit SFTP an einem Server (beinhaltet Archivierung mit `move.py`):
+
+5. Pfade, Urls und Benutzer in `ftpconfig.xml` anpassen (Vorlage: `ftpconfig.sample.xml`)
 	* (ftp.sh bzw move.py) Nach dem Upload und dem Tagesende werden die Aufzeichnungen nach `arch` verschoben
-5. Cronjob für Upload mit ftp.sh einrichten
+6. Cronjob für Upload mit `ftp.sh` einrichten
 
 # TODOS
 * TODOS ausdenken

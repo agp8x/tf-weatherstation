@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+from functools import partial
+import traceback
+
 try:
 	from tinkerforge.ip_connection import IPConnection
 	from tinkerforge.bricklet_temperature import Temperature
@@ -10,9 +13,8 @@ try:
 	from tinkerforge.bricklet_temperature_ir import BrickletTemperatureIR
 except ImportError:
 	print("package 'tinkerforge' not installed, canceling")
-	raise
-from functools import partial
-import traceback
+	raise Exception("package 'tinkerforge' not installed, canceling")
+
 from settings import SensorType
 from settings import settings
 
@@ -40,6 +42,7 @@ class ConnectionSetup(object):
 				connection.disconnect()
 
 class SensorSetup(object):
+	#TODO: port "getTYPE" to dict
 
 	def __init__(self, connection, sensors, cb_generic, log):
 		self.connection = connection

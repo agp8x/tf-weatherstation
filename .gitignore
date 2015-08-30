@@ -1,3 +1,9 @@
+config.json
+ftpconfig.xml
+arch/
+locks/
+logs/
+records/
 bin/
 bin/*
 *~

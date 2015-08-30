@@ -60,7 +60,7 @@ class Settings(dict):
 	def __delattr__(self,name):
 		del self[name]
 def load_json(filename="config.json"):
-	values=json.load(open('set.json'), object_hook=Settings)
+	values=json.load(open(filename), object_hook=Settings)
 	sensors_name="hosts"
 	if sensors_name in values:
 		for host in values[sensors_name]:
@@ -111,14 +111,6 @@ def setup_data_echo():
 	return log
 
 settings=load_json()
-hosts_name = "hosts"
-if hosts_name in settings:
-	tempSensors=0
-	for i in settings[hosts_name]:
-		for j in settings[hosts_name][i]['sensors']:
-			if settings[hosts_name][i]['sensors'][j][1] == SensorType.temp:
-				tempSensors+=1
-	settings.tempSensors=tempSensors
 """
 	0: {
 		"host": {

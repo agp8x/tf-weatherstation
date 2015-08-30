@@ -13,18 +13,26 @@ from settings import settings
 
 class Logger(object):
 	def __init__(self, log):
-		self.temp_sensors = settings.tempSensors
 		self.temp_prev_default = settings.prev_temps_default
-		self.prev_temps = []
-		for i in range(self.temp_sensors):
-			self.prev_temps.append(self.temp_prev_default)
+		self.prev_temps = self.__build_prev_temps__()
 		self.temp_max_diff = settings.tempmaxdiff
 		self.log = log
 		self.records = settings.records
 		self.dataecho = setup_data_echo()
 		self.datalog = setup_data_log()
 	
-	def temp_rise(self, old, new,sensor):
+	def __build_prev_temps__(self):
+		prev_temps={}
+		hosts_name = "hosts"
+		if hosts_name in settings:
+			for i in settings[hosts_name]:
+				for j in settings[hosts_name][i]['sensors']:
+					if settings[hosts_name][i]['sensors'][j][1] == SensorType.temp:
+						prev_temps[j]=self.temp_prev_default
+		return prev_temps
+	
+	def temp_rise(self, new, sensor):
+		old = self.prev_temps[sensor]
 		if(old == self.temp_prev_default):
 			return True
 		if(((old-new) > self.temp_max_diff) or ((new-old) > self.temp_max_diff)):
@@ -49,10 +57,9 @@ class Logger(object):
 	##########################################
 	def cb_generic(self,value, sensor, type, supress = False):
 		if type == SensorType.temp:
-			i = int(sensor[-1])-1 #sensor contains name, followed by int
-			if self.temp_rise(self.prev_temps[i], value, sensor):
+			if self.temp_rise(value, sensor):
 				self.write_value(value, sensor)
-				self.prev_temps[i] = value
+				self.prev_temps[sensor] = value
 		elif (type == SensorType.none):
 			return
 		else:

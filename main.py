@@ -15,8 +15,8 @@ def check_dirs_and_files():
 	# log
 	if not os.path.exists(settings.logs):
 		os.mkdir(settings.logs, 0o000755)
-	if not os.path.exists(settings.exceptionlog):
-		file=open(settings.exceptionlog, 'w')
+	if not os.path.exists(os.path.join(settings.logs,settings.exceptionlog)):
+		file=open(os.path.join(settings.logs,settings.exceptionlog), 'w')
 		file.write("<exceptions></exceptions>")
 		file.close()
 	# lock

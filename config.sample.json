@@ -7,7 +7,9 @@
 			},
 			"sensors":{
 				"iram": ["c8w", "SensorType.iram"],
-				"irob": ["c8w", "SensorType.irob"]
+				"irob": ["c8w", "SensorType.irob"],
+				"temp3": ["8ms", "SensorType.temp"],
+				"luftfeuchtigkeit_sauna": ["9V5", "SensorType.humi"]
 			}
 		}
 	},
@@ -36,5 +38,6 @@
 	"waitDelay" : 10,
 	"loglevel": "info",
 	"datalog": "info",
-	"dataecho": "info"
+	"dataecho": "info",
+	"legacy_record": false
 }

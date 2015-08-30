@@ -48,7 +48,8 @@ DEFAULTS ={
 	"tempSensors":0,
 	"loglevel": "info",
 	"datalog": "info",
-	"dataecho": "info"
+	"dataecho": "info",
+	"legacy_record": True
 }
 class Settings(dict):
 	def __getattr__(self,name):

@@ -3,4 +3,5 @@
 	<sftpuser>USER@DOMAIN.TLD</sftpuser>
 	<sftppass></sftppass><!--leave empty for key-auth-->
 	<url>PROTO://DOMAIN.TLD/PATH/FILE.EXT</url>
+	<tmp-dir>ftp</tmp-dir>
 </ftpconfig>

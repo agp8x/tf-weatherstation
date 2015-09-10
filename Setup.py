@@ -79,7 +79,7 @@ class SensorSetup(object):
             },
             SensorType.baro: {
                 'obj': Barometer,
-                'setcb': Barometer.get_air_pressure_callback_period,
+                'setcb': Barometer.set_air_pressure_callback_period,
                 'get': Barometer.get_air_pressure,
                 'cb': Barometer.CALLBACK_AIR_PRESSURE
             },

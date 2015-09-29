@@ -6,22 +6,17 @@ import traceback
 
 try:
     from tinkerforge.ip_connection import IPConnection
-    from tinkerforge.bricklet_temperature import Temperature
-    from tinkerforge.bricklet_humidity import Humidity
-    from tinkerforge.bricklet_ambient_light import AmbientLight
-    from tinkerforge.bricklet_barometer import Barometer
-    from tinkerforge.bricklet_temperature_ir import BrickletTemperatureIR
 except ImportError:
     print("package 'tinkerforge' not installed, canceling")
     raise Exception("package 'tinkerforge' not installed, canceling")
 
-from config import SensorType
-from config import settings
+from config import SensorType, settings, SENSOR_CONFIGS
 
 
 class ConnectionSetup(object):
     def __init__(self, log):
         self.log = log
+        self.__connections__ = []
 
     def setup_connection(self, host):
         ipcon = IPConnection()
@@ -30,15 +25,18 @@ class ConnectionSetup(object):
             self.log.info("connection to '%s:%s' established", host['name'], host['port'])
         except ConnectionError:
             self.log.error("connection to '%s:%s' failed", host['name'], host['port'])
+        self.__connections__.append(ipcon)
         return ipcon
 
-    def setup_connection_and_sensors(self, host, sensors, cb_generic):
+    def setup_connection_and_sensors(self, host, sensors, logger):
         ipcon = self.setup_connection(host)
-        sensor_setup = SensorSetup(ipcon, sensors, cb_generic, self.log)
+        sensor_setup = SensorSetup(ipcon, sensors, logger, self.log)
         connected_sensors = sensor_setup.setup_sensors()
         return ipcon, connected_sensors
 
     def disconnect_any(self, connections):
+        if connections is None:
+            connections = self.__connections__
         for connection in connections:
             if not connection.get_connection_state() is IPConnection.CONNECTION_STATE_DISCONNECTED:
                 self.log.debug("disconnecting (%s)", connection)
@@ -46,86 +44,51 @@ class ConnectionSetup(object):
 
 
 class SensorSetup(object):
-    def __init__(self, connection, sensors, cb_generic, log):
+    def __init__(self, connection, sensors, logger, log):
         self.connection = connection
         self.sensors = sensors
-        self.cb_generic = cb_generic
+        self.logger = logger
         self.log = log
         self._previous_sensors = {}
-        self._configs = {
-            # SensorType.none: {
-            # 	'obj': ,
-            # 	'setcb': ,
-            # 	'get': ,
-            # 	'cb':
-            # },
-            SensorType.temp: {
-                'obj': Temperature,
-                'setcb': Temperature.set_temperature_callback_period,
-                'get': Temperature.get_temperature,
-                'cb': Temperature.CALLBACK_TEMPERATURE
-            },
-            SensorType.humi: {
-                'obj': Humidity,
-                'setcb': Humidity.set_humidity_callback_period,
-                'get': Humidity.get_humidity,
-                'cb': Humidity.CALLBACK_HUMIDITY
-            },
-            SensorType.ambi: {
-                'obj': AmbientLight,
-                'setcb': AmbientLight.set_illuminance_callback_period,
-                'get': AmbientLight.get_illuminance,
-                'cb': AmbientLight.CALLBACK_ILLUMINANCE
-            },
-            SensorType.baro: {
-                'obj': Barometer,
-                'setcb': Barometer.set_air_pressure_callback_period,
-                'get': Barometer.get_air_pressure,
-                'cb': Barometer.CALLBACK_AIR_PRESSURE
-            },
-            SensorType.iram: {
-                'obj': BrickletTemperatureIR,
-                'setcb': BrickletTemperatureIR.set_ambient_temperature_callback_period,
-                'get': BrickletTemperatureIR.get_ambient_temperature,
-                'cb': BrickletTemperatureIR.CALLBACK_AMBIENT_TEMPERATURE
-            },
-            SensorType.irob: {
-                'obj': BrickletTemperatureIR,
-                'setcb': BrickletTemperatureIR.set_object_temperature_callback_period,
-                'get': BrickletTemperatureIR.get_object_temperature,
-                'cb': BrickletTemperatureIR.CALLBACK_OBJECT_TEMPERATURE
-            }
-        }
 
     def parametrized_callback(self, name, type):
-        return partial(self.cb_generic, sensor=name, type=type)
+        return partial(self.logger.cb_generic, sensor=name, type=type)
 
-    def __setupSensor__(self, callback, id, cbtime, var):
-        if id in self._previous_sensors:
-            self.log.debug("reusing instance for %s", id)
-            obj = self._previous_sensors[id]  # restore instance for another callback
+    def parametrized_callback_delta(self, name, type, getter):
+        return partial(self.logger.cb_delta, name=name, type=type, getter=getter)
+
+    def __setupSensor__(self, name, sensor):
+        sensor_id = sensor[0]
+        sensor_type = sensor[1]
+        var = SENSOR_CONFIGS[sensor_type]
+        if sensor_id in self._previous_sensors:
+            self.log.debug("reusing instance for %s", sensor_id)
+            obj = self._previous_sensors[sensor_id]  # restore instance for another callback
         else:
-            self.log.debug("new instance for %s", id)
-            obj = var['obj'](id, self.connection)  # construct instance
-            self._previous_sensors[id] = obj  # save instance for multiple callbacks
+            self.log.debug("new instance for %s", sensor_id)
+            obj = var['obj'](sensor_id, self.connection)  # construct instance
+            self._previous_sensors[sensor_id] = obj  # save instance for multiple callbacks
+        cbtime = settings.sensor_properties[sensor_type][0]
+        if 'delta' in var:
+            callback = self.parametrized_callback_delta(name, sensor_type, partial(var['get'], obj))
+        else:
+            callback = self.parametrized_callback(name, type=sensor_type)
         var['setcb'](obj, cbtime)  # set callback period
-        callback(var['get'](obj), supress=True)  # execute callback with raw getter as value
+        callback(var['get'](obj))  # execute callback with raw getter as value
         obj.register_callback(var['cb'], callback)  # register callback
         return obj
 
     def generic_sensor_setup(self, name, sensor):
         status = "setup device " + sensor[0] + " (" + name + "):"
-        callback = self.parametrized_callback(name, type=sensor[1])
-        cbtime = settings.sensor_properties[sensor[1]][0]
         obj = None
         if sensor[1] is SensorType.rain:
             self.log.error("rain is not yet implemented (%s, %s)", sensor[0], name)
             return None
-        elif not sensor[1] in self._configs:
+        elif not sensor[1] in SENSOR_CONFIGS:
             self.log.error("%s FAIL (unknown type)", status)
             return None
         try:
-            obj = self.__setupSensor__(callback, sensor[0], cbtime, self._configs[sensor[1]])
+            obj = self.__setupSensor__(name, sensor)
             self.log.info("%s OK", status)
         except Exception as e:
             self.log.error("%s FAIL:: %s (%s)", status, e, traceback.format_exc())

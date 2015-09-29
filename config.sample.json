@@ -8,6 +8,7 @@
 			"sensors":{
 				"iram": ["c8w", "SensorType.iram"],
 				"irob": ["c8w", "SensorType.irob"],
+				"ir-delta": ["c8w", "SensorType.irde"],
 				"temp3": ["8ms", "SensorType.temp"],
 				"luftfeuchtigkeit_sauna": ["9V5", "SensorType.humi"]
 			}
@@ -21,7 +22,8 @@
 		"SensorType.baro": [60000, 1000, "mbar"],
 		"SensorType.rain": [0, 2.5, "l/qm"],
 		"SensorType.iram": [1000, 10.0, "°C"],
-		"SensorType.irob": [1000, 10.0, "°C"]
+		"SensorType.irob": [1000, 10.0, "°C"],
+		"SensorType.irde": [60000, 10.0, "°C"]
 	},
 	"tempmaxdiff": 200,
 	"prev_temps_default": 20000,

@@ -55,4 +55,4 @@ Optional: Upload der Aufzeichnungen mit SFTP an einem Server (beinhaltet Archivi
 	* cb_delta(bricklet=REF)
 	* unterscheidung durch enum in configs (if CB.delta in ...)
 * ftp.sh:
-	* remote-pfad in xml
+	* remote-pfad in xml (ftp)

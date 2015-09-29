@@ -5,6 +5,16 @@ import json
 import logging
 import os
 
+try:
+    from tinkerforge.bricklet_temperature import Temperature
+    from tinkerforge.bricklet_humidity import Humidity
+    from tinkerforge.bricklet_ambient_light import AmbientLight
+    from tinkerforge.bricklet_barometer import Barometer
+    from tinkerforge.bricklet_temperature_ir import BrickletTemperatureIR
+except ImportError:
+    print("package 'tinkerforge' not installed, canceling")
+    raise Exception("package 'tinkerforge' not installed, canceling")
+
 
 class SensorType:
     none = 0
@@ -15,7 +25,60 @@ class SensorType:
     rain = 5  # IO4 #TODO
     iram = 6  # temperature ir bricklet, ambient
     irob = 7  # temperature ir bricklet, object
+    irde = 8  # temperature ir bricklet, delta object-ambient
 
+
+SENSOR_CONFIGS = {
+    # SensorType.none: {
+    # 	'obj': ,
+    # 	'setcb': ,
+    # 	'get': ,
+    # 	'cb':
+    # },
+    SensorType.temp: {
+        'obj': Temperature,
+        'setcb': Temperature.set_temperature_callback_period,
+        'get': Temperature.get_temperature,
+        'cb': Temperature.CALLBACK_TEMPERATURE
+    },
+    SensorType.humi: {
+        'obj': Humidity,
+        'setcb': Humidity.set_humidity_callback_period,
+        'get': Humidity.get_humidity,
+        'cb': Humidity.CALLBACK_HUMIDITY
+    },
+    SensorType.ambi: {
+        'obj': AmbientLight,
+        'setcb': AmbientLight.set_illuminance_callback_period,
+        'get': AmbientLight.get_illuminance,
+        'cb': AmbientLight.CALLBACK_ILLUMINANCE
+    },
+    SensorType.baro: {
+        'obj': Barometer,
+        'setcb': Barometer.set_air_pressure_callback_period,
+        'get': Barometer.get_air_pressure,
+        'cb': Barometer.CALLBACK_AIR_PRESSURE
+    },
+    SensorType.iram: {
+        'obj': BrickletTemperatureIR,
+        'setcb': BrickletTemperatureIR.set_ambient_temperature_callback_period,
+        'get': BrickletTemperatureIR.get_ambient_temperature,
+        'cb': BrickletTemperatureIR.CALLBACK_AMBIENT_TEMPERATURE
+    },
+    SensorType.irob: {
+        'obj': BrickletTemperatureIR,
+        'setcb': BrickletTemperatureIR.set_object_temperature_callback_period,
+        'get': BrickletTemperatureIR.get_object_temperature,
+        'cb': BrickletTemperatureIR.CALLBACK_OBJECT_TEMPERATURE
+    },
+    SensorType.irde: {
+        'delta': True,
+        'obj': BrickletTemperatureIR,
+        'setcb': BrickletTemperatureIR.set_object_temperature_callback_period,
+        'get': BrickletTemperatureIR.get_ambient_temperature,
+        'cb': BrickletTemperatureIR.CALLBACK_OBJECT_TEMPERATURE
+    }
+}
 
 DEFAULTS = {
     "hosts": {

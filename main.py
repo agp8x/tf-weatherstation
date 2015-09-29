@@ -64,7 +64,7 @@ if __name__ == "__main__":
                     try:
                         log.info("connecting to host '" + str(con) + "'")
                         con = settings.hosts[con]
-                        connection, sensors = conSetup.setup_connection_and_sensors(con['host'], con['sensors'], logger.cb_generic)
+                        connection, sensors = conSetup.setup_connection_and_sensors(con['host'], con['sensors'], logger)
                         connections.append(connection)
                         connectedSensors.append(sensors)
                         log.info("started logging at " + format_host(con['host']))

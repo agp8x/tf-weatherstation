@@ -50,7 +50,7 @@ class Logger(object):
         self.datalog.info('%s;%s;%s', value, int(time.time()), sensor)
 
     # generic callback
-    def cb_generic(self, value, sensor, type, supress=False):
+    def cb_generic(self, value, sensor, type):
         if type == SensorType.temp:
             if self.temp_rise(value, sensor):
                 self.write_value(value, sensor)
@@ -60,8 +60,12 @@ class Logger(object):
         else:
             self.write_value(value, sensor)
         unit = settings.sensor_properties[type]
-        if not supress:
-            self.dataecho.info(sensor + ': ' + str(value / unit[1]) + ' ' + unit[2])
+        self.dataecho.info(sensor + ': ' + str(value / unit[1]) + ' ' + unit[2])
+
+    def cb_delta(self, value, name, type, getter):
+        delta = value - getter()
+        self.log.info("DELTA of %s and %s is: %s (base was: %s)", name, getter, delta, value)
+        self.cb_generic(delta, name, type)
 
     # exception logging
     def print_exception(self, inst):

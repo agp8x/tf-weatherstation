@@ -72,16 +72,23 @@ if __name__ == "__main__":
                         # connection failed, log and exit
                         # TODO: logger.print_exception(inst)
                         log.error("connection failed: " + str(inst))
-                # noinspection PyUnboundLocalVariable
-                input("Press key to restart\n")
+                try:
+                    input("Press key to restart\n")
+                except Exception as e:
+                    log.critical("Exception: %s", e)
                 log.info("stop logging... @" + time.ctime() + "\n")
-                conSetup.disconnect_any(connections)
+                conSetup.disconnect_all()
+                connections = []
                 free_lock()
             else:
                 log.critical("lock collision: lock 'all' active")
             log.info("wait for retry (" + str(settings.waitDelay) + ")")
             time.sleep(settings.waitDelay)
     except KeyboardInterrupt:
-        log.info("keyboard-interrupt happened, cleaning up")
-        conSetup.disconnect_any(connections)
+        log.info("keyboard-interrupt happened")
+    except Exception as e:
+        log.critical("Exception: %s", e)
+    finally:
+        log.info("cleaning up")
+        conSetup.disconnect_all()
         free_lock()

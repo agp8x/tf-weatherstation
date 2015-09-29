@@ -34,7 +34,7 @@ class ConnectionSetup(object):
         connected_sensors = sensor_setup.setup_sensors()
         return ipcon, connected_sensors
 
-    def disconnect_any(self, connections):
+    def disconnect_all(self, connections):
         if connections is None:
             connections = self.__connections__
         for connection in connections:

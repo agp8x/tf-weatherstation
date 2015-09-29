@@ -21,10 +21,14 @@ cp records/baro* $TMPDIR/
 pushd $TMPDIR
 if [ -z $SFTPPASS ]; then
 	#sftp-key-auth
-	sftp -oBatchMode=no -b - $SFTPUSER "$FTP_COMMAND"
+	sftp -oBatchMode=no -b - $SFTPUSER <<EOF
+$FTP_COMMAND
+EOF
 else
 	#sftp-pass-auth
-	sshpass -p $SFTPPASS sftp -oBatchMode=no -b - $SFTPUSER "$FTP_COMMAND"
+	sshpass -p $SFTPPASS sftp -oBatchMode=no -b - $SFTPUSER <<EOF
+$FTP_COMMAND
+EOF
 fi
 rm humi* ambi* temp* baro*
 popd

@@ -64,7 +64,7 @@ class Logger(object):
 
     def cb_delta(self, value, name, type, getter):
         delta = value - getter()
-        self.log.info("DELTA of %s and %s is: %s (base was: %s)", name, getter, delta, value)
+        self.log.debug("DELTA of %s and %s is: %s (base was: %s)", name, getter, delta, value)
         self.cb_generic(delta, name, type)
 
     # exception logging

@@ -8,6 +8,7 @@ import os
 from timeFunctions import *
 from config import SensorType, setup_data_echo, setup_data_log
 from config import settings
+from tinkerforge import ip_connection
 
 
 class Logger(object):
@@ -63,7 +64,11 @@ class Logger(object):
         self.dataecho.info(sensor + ': ' + str(value / unit[1]) + ' ' + unit[2])
 
     def cb_delta(self, value, name, type, getter):
-        delta = value - getter()
+        try:
+            delta = value - getter()
+        except ip_connection.Error as e:
+            self.log.error(e)
+            return
         self.log.debug("DELTA of %s and %s is: %s (base was: %s)", name, getter, delta, value)
         self.cb_generic(delta, name, type)
 

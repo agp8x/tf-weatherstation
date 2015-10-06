@@ -8,9 +8,10 @@ quit
 "
 
 if [ ! -f $CONFIG ]; then
-	echo "configuration file not found, exiting! (see ftpconfig.sample.xml)"
+	echo "configuration file not found, exiting! (see ftpconfig.sample.xml)">>logs/ftp.log
 	exit 1;
 fi
+xmlstarlet --version || (echo "xmlstarlet not installed, exit!" >>logs/ftp.log && exit 1)
 read DIR SFTPUSER URL TMPDIR SFTPPASS < <(xmlstarlet sel -t -v "//dir" -o $'\t' -v "//sftpuser" -o $'\t' -v "//url" -o $'\t' -v "//tmp-dir" -o $'\t' -v "//sftppass" $CONFIG)
 
 cd $DIR || exit 1

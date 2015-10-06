@@ -39,13 +39,14 @@ Python (2/3), Bash, Tinkerforge
 
 Optional: Verschieben der Aufzeichnungen in ein Archiv:
 
-4. `move.py` z.B. als Cronjob starten
+1. `move.py` z.B. als Cronjob starten
 
 Optional: Upload der Aufzeichnungen mit SFTP an einem Server (beinhaltet Archivierung mit `move.py`):
 
-5. Pfade, Urls und Benutzer in `ftpconfig.xml` anpassen (Vorlage: `ftpconfig.sample.xml`)
+1. xmlstarlet installieren
+2. Pfade, Urls und Benutzer in `ftpconfig.xml` anpassen (Vorlage: `ftpconfig.sample.xml`)
 	* (ftp.sh bzw move.py) Nach dem Upload und dem Tagesende werden die Aufzeichnungen nach `arch` verschoben
-6. Cronjob für Upload mit `ftp.sh` einrichten
+3. Cronjob für Upload mit `ftp.sh` einrichten
 
 # TODOS
 * TODOS ausdenken

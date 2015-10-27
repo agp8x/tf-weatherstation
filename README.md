@@ -53,3 +53,4 @@ Optional: Upload der Aufzeichnungen mit SFTP an einem Server (beinhaltet Archivi
 * rugged approach [http://www.tinkerforge.com/en/doc/Tutorials/Tutorial_Rugged/Tutorial.html](http://www.tinkerforge.com/en/doc/Tutorials/Tutorial_Rugged/Tutorial.html)
 * ftp.sh:
 	* remote-pfad in xml (ftp)
+* mehrere callbacks auf einem callback werden durch letzten überschrieben
